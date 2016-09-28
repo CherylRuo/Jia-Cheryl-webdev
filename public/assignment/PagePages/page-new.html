@@ -8,26 +8,41 @@
 </head>
 <body>
 <div class="container">
-    <header>
-        <a href="../WebsitePages/website-list.html" class="navbar-link">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        New Page
-        <a href="page-list.html" class="navbar-link">
-            <span class="glyphicon glyphicon-ok"></span>
-        </a>
-    </header>
-    <form action="demo_form.asp">
-        <p>Name</p>
-        <input type="text" name="fname"><br>
-        <p>Title</p>
-        <input type="text" name="lname"><br>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+                <p class="navbar-text pull-right">
+                    <a href="page-list.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left"></span></a>
+                    <lable>New Page</lable>
+                    <a href="page-list.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-ok"></span></a>
+                </p>
+            </div>
+        </div>
+    </nav>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="name">
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="title">
+        </div>
     </form>
-    <footer>
-        <a href="../UserPages/profile.html" class="navbar-link">
-            <span class="glyphicon glyphicon-user"></span>
-        </a>
-    </footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row navbar-text">
+                <div class="col-xs-3 text-center">
+                    <a href="../UserPages/profile.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>
 </body>
 </html>

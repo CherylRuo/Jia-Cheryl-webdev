@@ -7,16 +7,21 @@
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+            <p class="navbar-text pull-right">
+                <a href="../WebsitePages/website-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span></a>
+                <lable>Pages</lable>
+                <a href="page-new.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus"></span></a>
+            </p>
+        </div>
+    </div>
+</nav>
 <div class="container">
-    <header>
-        <a href="../WebsitePages/website-list.html" class="navbar-link">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        Pages
-        <a href="page-new.html" class="navbar-link">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </header>
     <ul>
         <li><a href="page-edit.html" class="navbar-link">
             Blog Post
@@ -40,9 +45,17 @@
         </a></li>
         <li><a href="../WidgetPages/widget-list.html">Widget Name</a></li>
     </ul>
-    <footer><a href="../UserPages/profile.html" class="navbar-link">
-        <span class="glyphicon glyphicon-user"></span>
-    </a></footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row navbar-text">
+                <div class="col-xs-3 text-center">
+                    <a href="../UserPages/profile.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>
 </body>
 </html>

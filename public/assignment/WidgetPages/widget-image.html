@@ -8,33 +8,54 @@
 </head>
 <body>
 <div class="container">
-    <header>
-        <a href="widget-list.html" class="navbar-link">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        Widget Edit
-        <a href="widget-list.html" class="navbar-link">
-            <span class="glyphicon glyphicon-ok"></span>
-        </a>
-    </header>
-    <form action="demo_form.asp">
-        <p>Name</p>
-        <input type="text" name="fname"><br>
-        <p>Text</p>
-        <input type="text" name="fname"><br>
-        <p>URL</p>
-        <input type="text" name="fname"><br>
-        <p>Width</p>
-        <input type="text" name="fname"><br>
-        <p>Upload</p>
-        <input type="text" name="fname"><br>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+                <p class="navbar-text pull-right">
+                    <a href="widget-list.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left"></span></a>
+                    <lable>Edit Image</lable>
+                    <a href="widget-list.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-ok"></span></a>
+                </p>
+            </div>
+        </div>
+    </nav>
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="name">
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text" placeholder="text">
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" placeholder="url">
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text" class="form-control" id="width" placeholder="width">
+        </div>
+        <div class="form-group">
+            <label for="size">Size</label>
+            <input type="text" class="form-control" id="size" placeholder="size">
+        </div>
     </form>
-    <a>Delete</a>
-    <footer>
-        <a href="../UserPages/profile.html" class="navbar-link">
-            <span class="glyphicon glyphicon-user"></span>
-        </a>
-    </footer>
+    <a class="btn btn-danger  btn-block">Delete</a>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row navbar-text">
+                <div class="col-xs-3 text-center">
+                    <a href="../UserPages/profile.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>
 </body>
 </html>

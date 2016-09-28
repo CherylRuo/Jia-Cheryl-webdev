@@ -8,15 +8,18 @@
 </head>
 <body>
 <div class="container">
-    <header>
-        <a href="../UserPages/profile.html" class="navbar-link">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        Websites
-        <a href="website-new.html" class="navbar-link">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+                <p class="navbar-text pull-right">
+                    <lable>Websites</lable>
+                    <a href="website-new.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus"></span></a>
+                </p>
+            </div>
+        </div>
+    </nav>
     <ul>
         <li><a href="website-edit.html" class="navbar-link">
             Address Book App
@@ -36,9 +39,17 @@
         </a></li>
         <li><a href="../PagePages/page-list.html">Page Name</a></li>
     </ul>
-    <footer><a href="../UserPages/profile.html">
-        <span class="glyphicon glyphicon-user"></span></a>
-    </footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row navbar-text">
+                <div class="col-xs-3 text-center">
+                    <a href="../UserPages/profile.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>
 </body>
 </html>
