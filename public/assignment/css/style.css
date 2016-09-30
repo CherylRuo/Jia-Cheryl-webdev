@@ -4,13 +4,26 @@ input.form-control {
 
 body {
     padding-top: 60px;
+    background: url('1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-label {
-    padding-right: 36px;
+li {
+    margin: 20px;
 }
 
-a {
-    padding-right: 36px;
-    padding-left: 36px;
+span {
+    float: right;
 }
+
+#ok {
+    float: right;
+    padding-right: 25px;
+}
+
+
+
+
