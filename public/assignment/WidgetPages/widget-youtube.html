@@ -7,25 +7,38 @@
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="col-xs-1 col-sm-1">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"></a>
                 <p class="navbar-text">
                     <a href="widget-list.html" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span></a>
                 </p>
+            </div>
+        </div>
+
+        <div class="col-xs-10 col-sm-10">
+            <div class="navbar-header">
                 <a class="navbar-brand">
                     Edit YouTube
                 </a>
             </div>
-            <p id="ok" class="navbar-text">
-                <a href="widget-list.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-ok"></span></a>
-            </p>
         </div>
-    </nav>
+
+        <div class="col-sm-1 col-xs-1">
+            <div class="navbar-header">
+                <p id="ok" class="navbar-text">
+                    <a href="widget-list.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-ok"></span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
     <form>
         <div class="form-group">
             <label for="name">Name</label>
@@ -45,17 +58,19 @@
         </div>
     </form>
     <a class="btn btn-danger  btn-block">Delete</a>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div id="user" class="container-fluid">
-            <div class="row navbar-text">
-                <div class="col-xs-3 text-center">
-                    <a href="../UserPages/profile.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-user" style=color:#337ab7></span>
-                    </a>
-                </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div id="user" class="container-fluid">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+                <a href="../UserPages/profile.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-user" style=color:#337ab7></span>
+                </a>
             </div>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
+
 </body>
 </html>
