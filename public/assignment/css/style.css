@@ -35,6 +35,10 @@ span {
     float: right;
 }
 
+#floatright {
+    float: right !important;
+}
+
 #user {
     float: right;
     padding-right: 25px;
