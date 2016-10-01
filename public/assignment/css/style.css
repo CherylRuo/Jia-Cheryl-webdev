@@ -12,6 +12,10 @@ body {
     background-size: cover;
 }
 
+ul {
+    font-size: large;
+}
+
 li {
     margin: 20px;
 }
@@ -19,6 +23,7 @@ li {
 span {
     float: right;
     position: relative !important;
+    color: #337ab7 !important;
 
 }
 
@@ -53,6 +58,16 @@ img {
 iframe {
     width: 50%  !important;
     height: auto     !important;
+}
+
+#head {
+    color: #337ab7;
+    font-size: x-large;
+}
+
+#head1 {
+    color: #337ab7;
+    font-size: x-large;
 }
 
 

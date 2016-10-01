@@ -21,7 +21,7 @@
 
         <div class="col-xs-10 col-sm-10">
             <div class="navbar-header">
-                <a class="navbar-brand">
+                <a id="head" class="navbar-brand">
                     Edit Image
                 </a>
             </div>
@@ -58,17 +58,19 @@
             <input type="text" class="form-control" id="width" placeholder="width">
         </div>
         <div class="form-group">
-            <label for="size">Size</label>
-            <input type="text" class="form-control" id="size" placeholder="size">
+            <label for="size">Upload</label>
+            <input class="form-control" id="size" type="file" size="40" placeholder="upload">
         </div>
     </form>
+    <a class="btn btn-primary btn-block"
+       href="#">Upload Image</a>
     <a class="btn btn-danger  btn-block">Delete</a>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div id="user" class="container-fluid">
             <div class="row navbar-text">
                 <div class="col-xs-3 text-center">
                     <a href="../UserPages/profile.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-user" style=color:#337ab7></span>
+                        <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </div>
             </div>
