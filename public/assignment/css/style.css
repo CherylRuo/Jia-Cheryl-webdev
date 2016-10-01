@@ -3,7 +3,7 @@ input.form-control {
 }
 
 body {
-    padding-top: 80px;
+    padding-top: 60px;
     overflow: hidden;
     background: url('1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -39,6 +39,24 @@ span {
 
 .nounderline {
     text-decoration: none !important;
+}
+
+h1 {
+    color: black;
+}
+
+a {
+    position: relative;
+}
+
+img {
+    width:25%;   !important;
+    height: auto     !important;
+}
+
+iframe {
+    width: 50%  !important;
+    height: auto     !important;
 }
 
 
