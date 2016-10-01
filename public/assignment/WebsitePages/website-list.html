@@ -7,54 +7,60 @@
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"></a>
-                <p class="navbar-text">
-                    <lable>Websites</lable>
-                </p>
-                <p class="navbar-text">
-                    <a href="website-new.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-plus"></span></a>
-                </p>
-            </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p id="return" class="navbar-text">
+                <a href="../UserPages/profile.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span></a>
+            </p>
         </div>
-    </nav>
-    <ul>
-        <li><a href="website-edit.html" class="navbar-link">
+        <a class="navbar-brand" href="#">
+            Websites
+        </a>
+        <p id="ok" class="navbar-text">
+            <a href="website-new.html" class="navbar-link">
+                <span class="glyphicon glyphicon-plus"></span></a>
+        </p>
+    </div>
+</nav>
+
+<div class="container">
+    <ul style="font-size: large">
+        <li><a href="website-edit.html" class="nounderline">
             Address Book App
             <span class="glyphicon glyphicon-cog"></span>
         </a></li>
-        <li><a href="website-edit.html" class="navbar-link">
+        <li><a href="website-edit.html" class="nounderline">
             Blogger
             <span class="glyphicon glyphicon-cog"></span>
         </a></li>
-        <li><a href="website-edit.html" class="navbar-link">
+        <li><a href="website-edit.html" class="nounderline">
             Blogging App
             <span class="glyphicon glyphicon-cog"></span>
         </a></li>
-        <li><a href="website-edit.html" class="navbar-link">
+        <li><a href="website-edit.html" class="nounderline">
             Script Testing App
             <span class="glyphicon glyphicon-cog"></span>
         </a></li>
-        <li><a href="../PagePages/page-list.html" class="navbar-link">
-                Page Name
+        <li><a href="../PagePages/page-list.html" class="nounderline">
+                Page List
                 <span class="glyphicon glyphicon-list"></span>
         </a></li>
     </ul>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div class="row navbar-text">
-                <div class="col-xs-3 text-center">
-                    <a href="../UserPages/profile.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-user toright"></span>
-                    </a>
-                </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div id="user" class="container-fluid">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+                <a href="../UserPages/profile.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-user"  style=color:#337ab7></span>
+                </a>
             </div>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
+
 </body>
 </html>

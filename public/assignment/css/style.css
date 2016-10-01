@@ -3,7 +3,8 @@ input.form-control {
 }
 
 body {
-    padding-top: 60px;
+    padding-top: 80px;
+    overflow: hidden;
     background: url('1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -17,12 +18,34 @@ li {
 
 span {
     float: right;
+    position: relative !important;
+
 }
 
 #ok {
     float: right;
     padding-right: 25px;
 }
+
+#plus {
+    float: right;
+    padding-right: 25px;
+}
+
+#return {
+    float: left;
+}
+
+#user {
+    float: right;
+    padding-right: 25px;
+}
+
+.nounderline {
+    text-decoration: none !important;
+}
+
+
 
 
 
