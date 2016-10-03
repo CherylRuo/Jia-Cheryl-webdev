@@ -18,6 +18,7 @@ ul {
 
 li {
     margin: 20px;
+    list-style-type: none;
 }
 
 span {
