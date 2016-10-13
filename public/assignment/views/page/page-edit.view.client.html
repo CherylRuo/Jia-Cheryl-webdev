@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-
-<body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid row">
         <div class="col-xs-1 col-sm-1">
             <div class="navbar-header">
                 <p class="navbar-text">
-                    <a href="page-list.html" class="navbar-link">
+                    <a href="#/website/:wid/page" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
@@ -32,7 +21,7 @@
         <div class="col-sm-1 col-xs-1">
             <div class="navbar-header">
                 <p id="ok" class="navbar-text">
-                    <a href="page-list.html" class="navbar-link">
+                    <a href="#/website/:wid/page" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"></span></a>
                 </p>
             </div>
@@ -44,25 +33,26 @@
     <form>
         <div class="form-group">
             <label for="pagename">Name</label>
-            <input type="text" class="form-control" id="pagename" placeholder="name">
+            <input ng-model="model.page.firstName" class="form-control" type="text" id="pagename" placeholder="name"/>
+
         </div>
         <div class="form-group">
             <label for="pagedescription">Description</label>
-            <textarea rows="5" class="form-control" id="pagedescription" placeholder="description"></textarea>
+            <textarea ng-model="model.page.description" rows="5" class="form-control" id="pagedescription"
+                      placeholder="description"></textarea>
         </div>
     </form>
     <a class="btn btn-danger  btn-block">Delete</a>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div id="user" class="container-fluid">
-            <div class="row navbar-text">
-                <div class="col-xs-3 text-center">
-                    <a href="../UserPages/profile.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
-                </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div id="user" class="container-fluid">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+                <a href="#/user/:uid" class="navbar-link">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
             </div>
         </div>
-    </nav>
-</div>
-</body>
-</html>
+    </div>
+</nav>

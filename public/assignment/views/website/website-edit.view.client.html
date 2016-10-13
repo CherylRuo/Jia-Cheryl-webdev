@@ -1,0 +1,93 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid row">
+        <div class="col-xs-1 col-sm-1">
+            <div class="navbar-header">
+                <p class="navbar-text">
+                    <a href="website-list.view.client.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-xs-2 hidden-xs">
+            <div class="navbar-header">
+                <a id="head1" class="navbar-brand">
+                    Websites
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-1 hidden-xs">
+            <div class="navbar-header">
+                <p id="plus" class="navbar-text">
+                    <a href="website-new.view.client.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus"></span></a>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-xs-10 col-sm-7">
+            <div class="navbar-header">
+                <a id="head" class="navbar-brand" href="#">
+                    Edit Website
+                </a>
+            </div>
+        </div>
+
+        <div class="col-sm-1 col-xs-1">
+            <div class="navbar-header">
+                <p id="ok" class="navbar-text">
+                    <a href="website-list.view.client.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-ok"></span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {{ websites }}
+    <ul>
+        <li ng-repeat="website in websites">
+            <div class="container-fluid row">
+                <div class="col-xs-10">
+                    <a href="#/website/:wid/page" class="nounderline">
+                        {{ website.name }}</a>
+                </div>
+                <div class="col-xs-2">
+                    <a href="#/website/{{ website._id }}" class="nounderline">
+                        <span class="glyphicon glyphicon-cog"></span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="col-xs-12 col-sm-8">
+    <form>
+        <div class="form-group">
+            <label for="websitename">Website Name</label>
+            <input ng-model="model.website.websitename" class="form-control" id="websitename" type="text"
+                   placeholder="website name"/>
+        </div>
+        <div class="form-group">
+            <label for="webdescription">Website Description</label>
+            <textarea ng-model="model.website.webdescription" rows="5" class="form-control" id="webdescription"
+                      placeholder="website description"></textarea>
+        </div>
+    </form>
+    <a class="btn btn-danger  btn-block">Delete</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div id="user" class="container-fluid">
+        <div class="row navbar-text">
+            <div class="col-xs-3 text-center">
+                <a href="../user/profile.view.client.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
