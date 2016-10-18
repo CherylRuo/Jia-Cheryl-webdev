@@ -7,34 +7,46 @@
         .controller("LoginController", LoginController)
         .controller("RegisterController", RegisterController)
         .controller("ProfileController", ProfileController)
+
     function LoginController($location, UserService) {
         var vm = this;
         vm.login = login;
-        function login(user) {
-            user = UserService.findUserByCredentials(user.username, user.password);
-            if(user) {
-                $location.url("/user/" + user._id);
+
+        function login(username, password) {
+            var user = UserService.findUserByCredentials(username, password);
+            if(user === null) {
+                vm.error = "No such user";
             } else {
-                vm.alert = "Unable to login";
+                $location.url("/user/" + user._id);
+                console.log(user._id);
             }
         }
     }
 
-    function RegisterController($routeParams, UserService) {
+    function RegisterController($routeParams, $location, UserService) {
         var vm = this;
-        vm.user = $routeParams["user"];
-        vm.createWebsite = createWebsite;
-        function createWebsite(user) {
-            UserService.createWebsite(user);
+        var password = $routeParams['password'];
+        var verify_password = $routeParams['verifypassword']
+        if(password != verify_password) {
+            vm.error = "incorrect verify password";
+        }
+        vm.createUser = createUser;
+        function createUser(user) {
+            var id = UserService.createUser(user);
+            $location.url("/user/" + id);
         }
     }
 
     function ProfileController($routeParams, UserService) {
         var vm = this;
-        vm.userId = $routeParams["userId"];
-        function init() {
-            vm.user = UserService.findUserById(vm.userId);
+        var userId = parseInt($routeParams.uid);
+        var user = UserService.findUserById(userId);
+        if(user != null) {
+            vm.user = user;
         }
-        init();
+        vm.updateUser = updateUser;
+        function updateUser(updateUser) {
+            UserService.updateUser(userId, updateUser);
+        }
     }
 })();

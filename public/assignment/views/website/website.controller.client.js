@@ -9,23 +9,24 @@
         .controller("EditWebsiteController", EditWebsiteController)
     function WebsiteListController($routeParams, WebsiteService) {
         var vm = this;
-        vm.userId = $routeParams["userId"];
-        function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(userId);
-        }
-        init();
+        var userId = parseInt($routeParams['uid']);
+        vm.websites = WebsiteService.findWebsitesByUser(userId);
+        vm.userId = userId;
     }
 
-    function NewWebsiteController($routeProvider, WebsiteService) {
+    function NewWebsiteController($routeParams, WebsiteService) {
         var vm = this;
-        vm.userId = $routeProvider.userId;
+        var userId = parseInt($routeParams['uid']);
+        vm.websites = WebsiteService.findWebsitesByUser(userId);
+        vm.userId = userId;
         vm.createWebsite = createWebsite;
         function createWebsite(website) {
             WebsiteService.createWebsite(vm.userId, website);
         }
+
     }
 
-    function EditWebsiteController($routeProvider, WebsiteService) {
+    function EditWebsiteController($routeParams, WebsiteService) {
         var vm = this;
         vm.websiteId = $routeProvider.websiteId;
         vm.updateWebsite = updateWebsite;

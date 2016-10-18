@@ -1,17 +1,8 @@
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../css/style.css" rel="stylesheet"/>
-</head>
-
-<body>
 <div class="container">
     <h1>Login</h1>
-    <input ng-model="model.user.username" class="form-control" type="text"/>
-    <input ng-model="model.user.password" class="form-control" type="password"/>
-    <a ng-click="model.login(user)">Login</a>
+    <input ng-model="model.username" class="form-control" type="text"  placeholder="username"/>
+    <input ng-model="model.password" class="form-control" type="password"  placeholder="password"/>
+    <a ng-click="model.login(model.username, model.password)" class="btn btn-primary btn-block">login</a>
     <a class="btn btn-success btn-block"
        href="#/register">Register</a>
 </div>

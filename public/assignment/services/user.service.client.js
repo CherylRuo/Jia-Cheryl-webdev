@@ -1,30 +1,35 @@
 /**
  * Created by CherylRuo on 10/7/16.
  */
-
-(function() {
+(function(){
     angular
         .module("WebAppMaker")
         .factory("UserService", UserService);
     function UserService() {
         var users = [
-            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+            {_id: 123, username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
+            {_id: 234, username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+            {_id: 345, username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+            {_id: 456, username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
         ];
         var api = {
-            "createUser"   : "createUser",
-            "findUserById" : "findUserById",
-            "findUserByUsername" : "findUserByUsername",
-            "findUserByCredentials" : "findUserByCredentials",
-            "updateUser" : "updateUser",
-            "deleteUser" : "deleteUser"
+            createUser   : createUser,
+            findUserById : findUserById,
+            findUserByUsername : findUserByUsername,
+            findUserByCredentials : findUserByCredentials,
+            updateUser : updateUser,
+            deleteUser : deleteUser
         };
         return api;
 
         function createUser(user) {
-            users.add(user);
+            var id = Math.floor(Math.random()*900)+100;
+            while(findUserById(id) != null) {
+                id = Math.floor(Math.random()*900)+100;
+            }
+            user._id = id;
+            users.push(user);
+            return user._id;
         }
 
         function findUserById(id) {
@@ -44,9 +49,10 @@
         }
 
         function findUserByCredentials(username, password) {
-            for(var i=0; i<users.length; i++) {
-                if(users[i].username===username && users[i].password===password)
-                    return users[i];
+            for(var u in users) {
+                user = users[u];
+                if(user.username===username && user.password===password)
+                    return user;
             }
             return null;
         }
@@ -56,6 +62,7 @@
                 if(users[i]._id === userId)
                     users[i] = user;
             }
+            return null;
         }
 
         function deleteUser(userId) {
@@ -63,6 +70,7 @@
                 if (users[i]._id === userId)
                     users[i].splice(i, 1);
             }
+            return null;
         }
     }
 })();

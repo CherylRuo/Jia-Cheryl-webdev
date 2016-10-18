@@ -30,7 +30,7 @@
 </nav>
 
 <div class="container">
-    {{ pages }}
+    {{ model.pages }}
     <ul>
         <li ng-repeat="page in pages">
             <div class="container-fluid row">
@@ -39,7 +39,7 @@
                         Blog Post</a>
                 </div>
                 <div class="col-xs-2">
-                    <a href="#/page/{{ page._id }}" class="nounderline">
+                    <a href="#/page/{{ model.page._id }}" class="nounderline">
                         <span class="glyphicon glyphicon-cog"></span></a>
                 </div>
             </div>

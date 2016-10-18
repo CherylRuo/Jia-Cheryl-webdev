@@ -46,16 +46,14 @@
     </div>
 </nav>
 
-<div class="container">
-    {{ websites }}
+<div class="col-xs-4 hidden-xs">
     <ul>
-        <li ng-repeat="website in websites">
+        <li ng-repeat="website in model.websites">
             <div class="container-fluid row">
-                <div class="col-xs-10">
-                    <a href="#/website/:wid/page" class="nounderline">
-                        {{ website.name }}</a>
+                <div class="col-sm-9">
+                    <a href="#/website/:wid/page" class="nounderline">{{ website.name }}</a>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-sm-3">
                     <a href="#/website/{{ website._id }}" class="nounderline">
                         <span class="glyphicon glyphicon-cog"></span></a>
                 </div>
