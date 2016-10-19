@@ -18,7 +18,6 @@
                 vm.error = "No such user";
             } else {
                 $location.url("/user/" + user._id);
-                console.log(user._id);
             }
         }
     }
@@ -37,7 +36,7 @@
         }
     }
 
-    function ProfileController($routeParams, UserService) {
+    function ProfileController($location, $routeParams, UserService) {
         var vm = this;
         var userId = parseInt($routeParams.uid);
         var user = UserService.findUserById(userId);
@@ -47,6 +46,7 @@
         vm.updateUser = updateUser;
         function updateUser(updateUser) {
             UserService.updateUser(userId, updateUser);
+            $location.url("/user/" + userId);
         }
     }
 })();

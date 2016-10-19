@@ -14,28 +14,36 @@
         vm.userId = userId;
     }
 
-    function NewWebsiteController($routeParams, WebsiteService) {
+    function NewWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
-        var userId = parseInt($routeParams['uid']);
-        vm.websites = WebsiteService.findWebsitesByUser(userId);
-        vm.userId = userId;
+        var userId = parseInt($routeParams.uid);
+        var website = WebsiteService.findWebsitesByUser(userId);
+        if(website != null) {
+            vm.website = website;
+        }
         vm.createWebsite = createWebsite;
         function createWebsite(website) {
             WebsiteService.createWebsite(vm.userId, website);
+            $location.url("/user/"+ userId +"/website");
         }
-
     }
 
-    function EditWebsiteController($routeParams, WebsiteService) {
+    function EditWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
-        vm.websiteId = $routeProvider.websiteId;
+        var userId = parseInt($routeParams.uid);
+        var websiteId = parseInt($routeParams.wid);
+        var website = WebsiteService.findWebsiteById(websiteId);
+        if(website != null) {
+            vm.website = website;
+        }
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
-        function updateWebsite(website) {
-            WebsiteService.updateWebsite(vm.websiteId, website);
+        function updateWebsite(updateWebsite) {
+            WebsiteService.updateWebsite(websiteId, updateWebsite);
+            $location.url("/user/" + userId + "/website");
         }
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(vm.websiteId);
+            WebsiteService.deleteWebsite(websiteId);
         }
     }
 })();

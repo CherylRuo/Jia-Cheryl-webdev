@@ -7,13 +7,31 @@
         .controller("WidgetListController", WidgetListController)
         .controller("NewWidgetController", NewWidgetController)
         .controller("EditWidgetController", EditWidgetController)
-    function WidgetListController($routeParams, WebsiteService) {
-        var vm = this;
-        vm.pageId = $routeParams["pageId"];
+    function WidgetListController($routeParams, WidgetService, $sce) {
+        var vm  = this;
+        vm.uid  = $routeParams.uid;
+        vm.wid  = $routeParams.wid;
+        vm.pid  = $routeParams.pid;
+        vm.wgid = $routeParams.wgid;
+        vm.checkSafeHtml = checkSafeHtml;
+        vm.checkSafeYouTubeUrl = checkSafeYouTubeUrl;
+
         function init() {
-            vm.widgets = WebsiteService.findWidgetsByPageId(pageId);
+            vm.widgets = WidgetService.findWidgetsForPage(vm.pid);
         }
         init();
+
+        function checkSafeHtml(html) {
+            return $sce.trustAsHtml(html);
+        }
+
+        function checkSafeYouTubeUrl(url) {
+            var parts = url.split('/');
+            var id = parts[parts.length - 1];
+            url = "https://www.youtube.com/embed/"+id;
+            console.log(url);
+            return $sce.trustAsResourceUrl(url);
+        }
     }
 
     function NewWidgetController($routeProvider, WebsiteService) {
@@ -25,16 +43,17 @@
         }
     }
 
-    function EditWidgetController($routeProvider, WebsiteService) {
+    function EditWidgetController($routeParams, WidgetService, $sce) {
         var vm = this;
-        vm.widgetId = $routeProvider.widgetId;
-        vm.updateWidget = updateWidget;
-        vm.deleteWidget = deleteWidget;
-        function updateWidget(widget) {
-            WebsiteService.updateWidget(vm.widgetId, widget);
+        vm.uid = $routeParams.uid;
+        vm.wid = $routeParams.wid;
+        vm.pid = $routeParams.pid;
+        vm.wgid = $routeParams.wgid;
+
+        function init() {
+            vm.widget = WidgetService.findWidgetById(vm.wgid);
         }
-        function deleteWidget() {
-            WebsiteService.deleteWidget(vm.widgetId);
-        }
+        init();
+
     }
 })();

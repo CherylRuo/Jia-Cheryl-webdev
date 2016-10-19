@@ -7,12 +7,12 @@
         .factory("WebsiteService", WebsiteService);
     function WebsiteService() {
         var websites = [
-            { "_id": 123, "name": "Facebook",    "developerId": 456 },
-            { "_id": 234, "name": "Tweeter",     "developerId": 456 },
-            { "_id": 456, "name": "Gizmodo",     "developerId": 456 },
-            { "_id": 567, "name": "Tic Tac Toe", "developerId": 123 },
-            { "_id": 678, "name": "Checkers",    "developerId": 123 },
-            { "_id": 789, "name": "Chess",       "developerId": 234 }
+            { _id: 123, name: "Facebook",    developerId: 456, description: "facebook" },
+            { _id: 234, name: "Tweeter",     developerId: 456, description: "tweeter" },
+            { _id: 456, name: "Gizmodo",     developerId: 456, description: "gizmodo" },
+            { _id: 567, name: "Tic Tac Toe", developerId: 123, description: "tic tac toe" },
+            { _id: 678, name: "Checkers",    developerId: 123, description: "checkers" },
+            { _id: 789, name: "Chess",       developerId: 234, description: "chess" }
         ];
         var api = {
             createWebsite  : createWebsite,
@@ -23,9 +23,16 @@
         };
         return api;
         function createWebsite(userId, website) {
+            var id = Math.floor(Math.random()*900)+100;
+            while(findWebsiteById(id) != null) {
+                id = Math.floor(Math.random()*900)+100;
+            }
+            website._id = id;
             website.developerId = userId;
-            websites.add(website);
+            websites.push(website);
+            return website._id;
         }
+
         function findWebsitesByUser(userId) {
             var result = [];
             for(var i=0; i<websites.length; i++) {
