@@ -9,11 +9,11 @@
         var widgets = [
             { _id: 123, widgetType: "HEADER", pageId: 246, size: 2, text: "GIZMODO"},
             { _id: 234, widgetType: "HEADER", pageId: 321, size: 4, text: "Lorem ipsum"},
-            { _id: 345, widgetType: "IMAGE", pageId: 246, width: "100%",
+            { _id: 345, widgetType: "IMAGE", pageId: 246, text: "image", width: "100%",
                 url: "https://pbs.twimg.com/profile_images/749999977145987073/TIBx9FL__400x400.jpg"},
             { _id: 456, widgetType: "HTML", pageId: 246, text: "<p>Lorem ipsum</p>"},
             { _id: 567, widgetType: "HEADER", pageId: 321, size: 4, text: "Lorem ipsum"},
-            { _id: 678, widgetType: "YOUTUBE", pageId: 246, width: "100%",
+            { _id: 678, widgetType: "YOUTUBE", pageId: 246, text: "youtube", width: "100%",
                 url: "https://youtu.be/AM2Ivdi9c4E" },
             { _id: 135, widgetType: "HTML", pageId: 222, text: "<p>Lorem ipsum</p>"},
             { _id: 234, widgetType: "HTML", pageId: 259, text: "<p>Lorem ipsum</p>"}
