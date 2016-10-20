@@ -20,6 +20,7 @@
             deletePage : deletePage
         };
         return api;
+
         function createPage(websiteId, page) {
             var id = Math.floor(Math.random()*900)+100;
             while(findPageById(id) != null) {
@@ -43,23 +44,26 @@
 
         function findPageById(pageId) {
             for(var i=0; i<pages.length; i++) {
-                pages[i].pageId === pageId;
-                return pages[i];
+                if(pages[i]._id === pageId) {
+                    return pages[i];
+                }
             }
             return null;
         }
 
         function updatePage(pageId, page) {
             for(var i=0; i<pages.length; i++) {
-                pages[i].pageId === pageId;
-                pages[i] = page;
+                if(pages[i]._id === pageId) {
+                    pages[i] = page;
+                }
             }
         }
 
         function deletePage(pageId) {
-            for(var i=pages.length-1; i--;){
-                if (pages[i].pageId === pageId)
-                    pages[i].splice(i, 1);
+            for(var i=0; i<pages.length; i++) {
+                if (pages[i]._id === pageId) {
+                    pages.splice(i, 1);
+                }
             }
         }
     }

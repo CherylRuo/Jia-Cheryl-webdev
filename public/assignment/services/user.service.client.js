@@ -66,11 +66,10 @@
         }
 
         function deleteUser(userId) {
-            for(var i = users.length-1; i--;){
+            for(var i=0; i<users.length; i++) {
                 if (users[i]._id === userId)
-                    users[i].splice(i, 1);
+                    users.splice(i, 1);
             }
-            return null;
         }
     }
 })();

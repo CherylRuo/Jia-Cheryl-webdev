@@ -61,9 +61,9 @@
         }
 
         function deleteWebsite(websiteId) {
-            for(var i = websites.length-1; i--;){
+            for(var i=0; i<websites.length; i++) {
                 if (websites[i]._id === websiteId)
-                    websites[i].splice(i, 1);
+                    websites.splice(i, 1);
             }
         }
     }

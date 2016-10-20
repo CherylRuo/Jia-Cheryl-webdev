@@ -9,7 +9,7 @@
         .controller("EditWebsiteController", EditWebsiteController)
     function WebsiteListController($routeParams, WebsiteService) {
         var vm = this;
-        var userId = parseInt($routeParams['uid']);
+        var userId = parseInt($routeParams.uid);
         vm.websites = WebsiteService.findWebsitesByUser(userId);
         vm.userId = userId;
     }
@@ -17,15 +17,20 @@
     function NewWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
         var userId = parseInt($routeParams.uid);
-        var website = WebsiteService.findWebsitesByUser(userId);
-        if(website != null) {
-            vm.website = website;
+        var websites = WebsiteService.findWebsitesByUser(userId);
+        if(websites != null) {
+            vm.websites = websites;
         }
         vm.createWebsite = createWebsite;
         function createWebsite(website) {
+            if(website == null) {
+                vm.error = "Please create a website.";
+                return;
+            }
             WebsiteService.createWebsite(vm.userId, website);
             $location.url("/user/"+ userId +"/website");
         }
+        vm.userId = userId;
     }
 
     function EditWebsiteController($location, $routeParams, WebsiteService) {
@@ -33,8 +38,10 @@
         var userId = parseInt($routeParams.uid);
         var websiteId = parseInt($routeParams.wid);
         var website = WebsiteService.findWebsiteById(websiteId);
-        if(website != null) {
-            vm.website = website;
+        vm.website = website;
+        var websites = WebsiteService.findWebsitesByUser(userId);
+        if(websites != null) {
+            vm.websites = websites;
         }
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
@@ -44,6 +51,9 @@
         }
         function deleteWebsite() {
             WebsiteService.deleteWebsite(websiteId);
+            $location.url("/user/" + userId + "/website");
         }
+        vm.userId = userId;
+        vm.websiteId = websiteId;
     }
 })();

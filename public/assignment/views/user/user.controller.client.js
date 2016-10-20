@@ -22,15 +22,14 @@
         }
     }
 
-    function RegisterController($routeParams, $location, UserService) {
+    function RegisterController($location, UserService) {
         var vm = this;
-        var password = $routeParams['password'];
-        var verify_password = $routeParams['verifypassword']
-        if(password != verify_password) {
-            vm.error = "incorrect verify password";
-        }
         vm.createUser = createUser;
         function createUser(user) {
+            if(user.password != user.verifypassword) {
+                vm.error = "incorrect verify password";
+                return;
+            }
             var id = UserService.createUser(user);
             $location.url("/user/" + id);
         }
