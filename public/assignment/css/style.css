@@ -92,9 +92,16 @@ iframe {
 }
 
 #project {
-    font-family: Brush Script MT;
-    color: darkred;
+    max-height: 150px;
+    overflow-y: scroll;
+    font-family: Georgia;
     padding-top: 20px;
     padding-left: 20px;
     background: url('../images/3.jpg') no-repeat center center fixed;
+}
+
+.shortname {
+    position: absolute;
+    display: block;
+    margin: auto;
 }
