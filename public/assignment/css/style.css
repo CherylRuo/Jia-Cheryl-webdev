@@ -12,6 +12,18 @@ body {
     background-size: cover;
 }
 
+#home {
+    font-family: Georgia;
+    padding-top: 20px;
+    padding-left: 10px;
+    overflow: hidden;
+    background: url('../images/2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 ul {
     font-size: large;
 }
@@ -72,4 +84,8 @@ iframe {
     color: #337ab7;
 }
 
-
+#cherylruo {
+    padding-left: 60px;
+    width:20%;   !important;
+    height: auto     !important;
+}
