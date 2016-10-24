@@ -15,7 +15,7 @@
         function login(username, password) {
             var user = UserService.findUserByCredentials(username, password);
             if(user === null) {
-                vm.error = "No such user";
+                vm.alert = "No such user";
             } else {
                 $location.url("/user/" + user._id);
             }
@@ -27,7 +27,7 @@
         vm.createUser = createUser;
         function createUser(user) {
             if(user.password != user.verifypassword) {
-                vm.error = "incorrect verify password";
+                vm.alert = "incorrect verify password";
                 return;
             }
             var id = UserService.createUser(user);

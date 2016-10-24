@@ -27,7 +27,7 @@
         vm.createPage = createPage;
         function createPage(page) {
             if(page == null) {
-                vm.error = "Please create a new page.";
+                vm.alert = "Please create a new page.";
                 return;
             }
             PageService.createPage(vm.websiteId, page);

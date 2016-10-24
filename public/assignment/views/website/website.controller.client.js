@@ -24,7 +24,7 @@
         vm.createWebsite = createWebsite;
         function createWebsite(website) {
             if(website == null) {
-                vm.error = "Please create a website.";
+                vm.alert = "Please create a website.";
                 return;
             }
             WebsiteService.createWebsite(vm.userId, website);
