@@ -10,7 +10,7 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover
 }
 
 #home {
@@ -19,12 +19,12 @@ body {
     color: royalblue;
     padding-top: 10px;
     padding-left: 10px;
-    overflow: hidden;
+    overflow: auto;
     background: url('../images/2.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover
 }
 
 ul {
@@ -40,7 +40,7 @@ span {
     padding-left: 26px;
     float: right;
     position: relative !important;
-    color: #337ab7 !important;
+    color: #337ab7 !important
 
 }
 
@@ -58,25 +58,25 @@ span {
 
 #user {
     float: right;
-    padding-right: 25px;
+    padding-right: 25px
 }
 
 .nounderline {
-    text-decoration: none !important;
+    text-decoration: none !important
 }
 
 a {
-    position: relative;
+    position: relative
 }
 
 img {
     width:25%;   !important;
-    height: auto     !important;
+    height: auto     !important
 }
 
 iframe {
     width: 50%  !important;
-    height: auto     !important;
+    height: auto     !important
 }
 
 #head {
@@ -89,21 +89,21 @@ iframe {
 
 #cherylruo {
     padding-left: 60px;
-    width: 260px !important;
-    overflow: hidden
+    min-width: 260px !important;
+    overflow: auto
 }
 
 #project {
-    max-height: 150px;
+    min-width: 1000px !important;
     overflow-y: scroll;
     font-family: Georgia;
     padding-top: 20px;
     padding-left: 20px;
-    background: pink;
+    background: pink
 }
 
 .shortname {
     position: absolute;
     display: block;
-    margin: auto;
+    margin: auto
 }
