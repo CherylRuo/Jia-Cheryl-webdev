@@ -31,7 +31,7 @@
 </nav>
 
 <div class="container">
-    <form>
+    <form action="/api/upload"  method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
             <input ng-model="model.widget.widgetType" type="text" class="form-control" id="name" placeholder="name"
@@ -50,13 +50,13 @@
             <input ng-model="model.widget.width" type="text" class="form-control" id="width" placeholder="width">
         </div>
         <div class="form-group">
-            <label for="size">Upload</label>
-            <input ng-model="model.widget.size" class="form-control" id="size" type="file" size="40"
-                   placeholder="upload">
+            <label for="upload">Upload</label>
+            <input  name="myFile"   type="file" class="form-control"/>
+            <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+            <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+            <button id="upload" type="submit"   class="btn btn-block btn-primary">Upload Image</button>
         </div>
     </form>
-    <a class="btn btn-primary btn-block"
-       href="#">Upload Image</a>
     <a ng-click="model.deleteWidget(model.widgetId)" class="btn btn-danger  btn-block">Delete</a>
 </div>
 

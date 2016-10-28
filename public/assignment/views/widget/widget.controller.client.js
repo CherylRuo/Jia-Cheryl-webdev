@@ -6,13 +6,16 @@
         .module("WebAppMaker")
         .controller("WidgetListController", WidgetListController)
         .controller("NewWidgetController", NewWidgetController)
-        .controller("EditWidgetController", EditWidgetController)
+        .controller("EditWidgetController", EditWidgetController);
+
     function WidgetListController($routeParams, WidgetService, $sce) {
         var vm  = this;
         var userId  = parseInt($routeParams.uid);
         var websiteId = parseInt($routeParams.wid);
         var pageId  = parseInt($routeParams.pid);
-        vm.widgets = WidgetService.findWidgetsByPageId(pageId);
+        WidgetService.findAllWidgetsForPage(pageId, function(response) {
+            vm.widgets = response;
+        });
         vm.userId = userId;
         vm.websiteId = websiteId;
         vm.pageId = pageId;
@@ -35,14 +38,18 @@
         var websiteId = parseInt($routeParams.wid);
         var userId = parseInt($routeParams.uid);
         var pageId = parseInt($routeParams.pid);
-        var widgets = WidgetService.findWidgetsByPageId(pageId);
-        if(widgets != null) {
-            vm.widgets = widgets;
-        }
+        WidgetService.findAllWidgetsForPage(pageId, function(response) {
+            vm.widgets = response;
+        });
         vm.createWidget = createWidget;
         function createWidget(widget) {
-            WidgetService.createWidget(vm.pageId, widget);
-            $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+            if(widget == null) {
+                vm.alert = "Please create a new widget.";
+                return;
+            }
+            WidgetService.createWidget(vm.pageId, widget, function(response) {
+                $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+            });
         }
         vm.websiteId = websiteId;
         vm.userId = userId;
@@ -55,21 +62,25 @@
         var userId = parseInt($routeParams.uid);
         var pageId = parseInt($routeParams.pid);
         var widgetId = parseInt($routeParams.wgid);
-
-        var widget = WidgetService.findWidgetById(widgetId);
-        if(widget != null) {
-            vm.widget = widget;
-        }
-
+        var widget = null;
+        WidgetService.findAllWidgetsForPage(pageId, function(response) {
+            vm.widgets = response;
+        });
+        WidgetService.findWidgetById(widgetId, function(response) {
+            vm.widget = response;
+        });
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
         function updateWidget(updateWidget) {
-            WidgetService.updateWidget(pageId, updateWidget);
-            $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+            WidgetService.updateWidget(pageId, updateWidget, function(response) {
+                $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+            });
         }
         function deleteWidget() {
-            WidgetService.deleteWidget(widgetId);
-            $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+            WidgetService.deleteWidget(widgetId, function(response) {
+                $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+
+            });
         }
         vm.pageId = pageId;
         vm.websiteId = websiteId;
