@@ -12,7 +12,7 @@
             findUserByUsername : findUserByUsername,
             findUserByCredentials : findUserByCredentials,
             updateUser : updateUser,
-            deleteUser : deleteUser
+            unregisterUser : unregisterUser
         };
         return api;
 
@@ -47,7 +47,7 @@
                 .success(callback);
         }
 
-        function deleteUser(userId, callback) {
+        function unregisterUser(userId, callback) {
             $http
                 .delete("/api/user/" + userId)
                 .success(callback);

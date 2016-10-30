@@ -11,16 +11,22 @@ module.exports = function (app) {
         {_id: 789, name: "Chess", developerId: 234, description: "chess"}
     ];
 
-    app.post("/api/user/:userId/website", function (req, res) { //createWebsite
+    app.post('/api/user/:userId/website', createWebsite);
+    app.get('/api/user/:userId/website', findAllWebsitesForUser);
+    app.get('/api/website/:websiteId', findWebsiteById);
+    app.put('/api/website/:websiteId', updateWebsite);
+    app.delete('/api/website/:websiteId', deleteWebsite);
+
+    function createWebsite(req, res) {
         var website = req.body;
         websites.sort();
         website._id = websites[websites.length - 1]._id + 1;
         website.developerId = req.params['userId'];
         websites.push(website);
         res.json(website);
-    });
+    }
 
-    app.get("/api/user/:userId/website", function (req, res) { //findAllWebsitesForUser
+    function findAllWebsitesForUser(req, res) {
         var id = req.params['userId'];
         var result = [];
         for (var w in websites) {
@@ -30,17 +36,17 @@ module.exports = function (app) {
             }
         }
         res.send(result);
-    });
+    }
 
-    app.get("/api/website/:websiteId", function (req, res) { //findWebsiteById
+    function findWebsiteById(req, res) {
         var id = req.params['websiteId'];
         for (var i = 0; i < websites.length; i++) {
             if (websites[i]._id == id)
                 res.send(websites[i]);
         }
-    });
+    }
 
-    app.put("/api/website/:websiteId", function (req, res) { //updateWebsite
+    function updateWebsite(req, res) {
         var id = req.params['websiteId'];
         var website = req.body;
         for (var w in websites) {
@@ -52,14 +58,14 @@ module.exports = function (app) {
             }
         }
         res.json(websites);
-    });
+    }
 
-    app.delete("/api/website/:websiteId", function (req, res) { //deleteWebsite
+    function deleteWebsite(req, res) {
         var id = req.params['websiteId'];
         for(var i=0; i<websites.length; i++) {
             if(websites[i]._id == id)
                 websites.splice(i, 1);
         }
         res.send(websites);
-    });
-}
+    }
+};

@@ -9,16 +9,22 @@ module.exports = function (app) {
         {_id: 246, name: "Post 4", websiteId: 789}
     ];
 
-    app.post("/api/website/:websiteId/page", function (req, res) { //createPage
+    app.post('/api/website/:websiteId/page', createPage);
+    app.get('/api/website/:websiteId/page', findAllPagesForWebsite);
+    app.get('/api/page/:pageId', findPageById);
+    app.put('/api/page/:pageId', updatePage);
+    app.delete('/api/page/:pageId', deletePage);
+
+    function createPage(req, res) {
         var page = req.body;
         pages.sort();
         page._id = pages[pages.length - 1]._id + 1;
         page.websiteId = req.params['websiteId'];
         pages.push(page);
         res.json(page);
-    });
+    }
 
-    app.get("/api/website/:websiteId/page", function (req, res) { //findAllPagesForWebsite
+    function findAllPagesForWebsite(req, res) {
         var id = req.params["websiteId"];
         var result = [];
         for (var p in pages) {
@@ -28,17 +34,17 @@ module.exports = function (app) {
             }
         }
         res.send(result);
-    });
+    }
 
-    app.get("/api/page/:pageId", function (req, res) { //findPageById
+    function findPageById(req, res) {
         var id = req.params["pageId"];
         for (var i = 0; i < pages.length; i++) {
             if (pages[i]._id == id)
                 res.send(pages[i]);
         }
-    });
+    }
 
-    app.put("/api/page/:pageId", function (req, res) { //updatePage
+    function updatePage(req, res) {
         var id = req.params["pageId"];
         var page = req.body;
         for (var w in pages) {
@@ -50,14 +56,14 @@ module.exports = function (app) {
             }
         }
         res.json(pages);
-    });
+    }
 
-    app.delete("/api/page/:pageId", function (req, res) { //deletePage
+    function deletePage(req, res) {
         var id = req.params["pageId"];
         for(var i=0; i<pages.length; i++) {
             if(pages[i]._id == id)
                 pages.splice(i, 1);
         }
         res.send(pages);
-    });
-}
+    }
+};
