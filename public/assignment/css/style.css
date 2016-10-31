@@ -37,11 +37,13 @@ li {
 }
 
 span {
-    padding-left: 26px;
-    float: right;
     position: relative !important;
     color: #337ab7 !important
+}
 
+#widgetlist {
+    padding-left: 26px;
+    float: right;
 }
 
 #ok {
