@@ -3,7 +3,6 @@ input.form-control {
 }
 
 body {
-    overflow-x: hidden;
     overflow-y: scroll;
     padding-top: 60px;
     background: url('../images/1.jpg') no-repeat center center fixed;
@@ -96,9 +95,9 @@ iframe {
 }
 
 #project {
+    font-family: Georgia;
     min-width: 1000px !important;
     overflow-y: scroll;
-    font-family: Georgia;
     padding-top: 60px;
     padding-left: 20px;
     background: pink
@@ -109,3 +108,8 @@ iframe {
     display: block;
     margin: auto
 }
+
+p {
+    word-break: break-all !important
+}
+
