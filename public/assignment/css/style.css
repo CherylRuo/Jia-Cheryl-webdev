@@ -3,9 +3,9 @@ input.form-control {
 }
 
 body {
+    overflow-x: hidden;
     overflow-y: scroll;
     padding-top: 60px;
-    overflow: hidden;
     background: url('../images/1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -99,7 +99,7 @@ iframe {
     min-width: 1000px !important;
     overflow-y: scroll;
     font-family: Georgia;
-    padding-top: 20px;
+    padding-top: 60px;
     padding-left: 20px;
     background: pink
 }
