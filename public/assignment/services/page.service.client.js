@@ -15,34 +15,29 @@
         };
         return api;
 
-        function createPage(websiteId, page, callback) {
-            $http
+        function createPage(websiteId, page) {
+            return $http
                 .post("/api/website/" + websiteId + "/page", page)
-                .success(callback);
         }
 
-        function findAllPagesForWebsite(websiteId, callback) {
-            $http
+        function findAllPagesForWebsite(websiteId) {
+            return $http
                 .get("/api/website/" + websiteId + "/page")
-                .success(callback);
         }
 
-        function findPageById(pageId, callback) {
-            $http
+        function findPageById(pageId) {
+            return $http
                 .get("/api/page/"+ pageId)
-                .success(callback);
         }
 
-        function updatePage(pageId, page, callback) {
-            $http
+        function updatePage(pageId, page) {
+            return $http
                 .put("/api/page/" + pageId, page)
-                .success(callback);
         }
 
-        function deletePage(pageId, callback) {
-            $http
+        function deletePage(pageId) {
+            return $http
                 .delete("/api/page/" + pageId)
-                .success(callback);
         }
     }
 })();

@@ -15,34 +15,29 @@
         };
         return api;
 
-        function createWidget(pageId, widget, callback) {
-            $http
+        function createWidget(pageId, widget) {
+            return $http
                 .post("/api/page/" + pageId + "/widget", widget)
-                .success(callback);
         }
 
-        function findAllWidgetsForPage(pageId, callback) {
-            $http
+        function findAllWidgetsForPage(pageId) {
+            return $http
                 .get("/api/page/" + pageId + "/widget")
-                .success(callback);
         }
 
-        function findWidgetById(widgetId, callback) {
-            $http
+        function findWidgetById(widgetId) {
+            return $http
                 .get("/api/widget/"+ widgetId)
-                .success(callback);
         }
 
-        function updateWidget(widgetId, widget, callback) {
-            $http
+        function updateWidget(widgetId, widget) {
+            return $http
                 .put("/api/widget/" + widgetId, widget)
-                .success(callback);
         }
 
-        function deleteWidget(widgetId, callback) {
-            $http
+        function deleteWidget(widgetId) {
+            return $http
                 .delete("/api/widget/" + widgetId)
-                .success(callback);
         }
     }
 })();

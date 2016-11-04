@@ -13,9 +13,14 @@
         var userId  = parseInt($routeParams.uid);
         var websiteId = parseInt($routeParams.wid);
         var pageId  = parseInt($routeParams.pid);
-        WidgetService.findAllWidgetsForPage(pageId, function(response) {
-            vm.widgets = response;
-        });
+        var promise = WidgetService.findAllWidgetsForPage(pageId);
+        promise.then(
+            function(response) {
+                vm.widgets = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.userId = userId;
         vm.websiteId = websiteId;
         vm.pageId = pageId;
@@ -38,18 +43,28 @@
         var websiteId = parseInt($routeParams.wid);
         var userId = parseInt($routeParams.uid);
         var pageId = parseInt($routeParams.pid);
-        WidgetService.findAllWidgetsForPage(pageId, function(response) {
-            vm.widgets = response;
-        });
+        var promise = WidgetService.findAllWidgetsForPage(pageId);
+        promise.then(
+            function(response){
+                vm.widgets = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.createWidget = createWidget;
         function createWidget(widget) {
             if(widget == null) {
                 vm.alert = "Please create a new widget.";
                 return;
             }
-            WidgetService.createWidget(vm.pageId, widget, function(response) {
-                $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
-            });
+            var promise = WidgetService.createWidget(vm.pageId, widget);
+            promise.then(
+                function(response){
+                    $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         vm.websiteId = websiteId;
         vm.userId = userId;
@@ -63,24 +78,44 @@
         var pageId = parseInt($routeParams.pid);
         var widgetId = parseInt($routeParams.wgid);
         var widget = null;
-        WidgetService.findAllWidgetsForPage(pageId, function(response) {
-            vm.widgets = response;
-        });
-        WidgetService.findWidgetById(widgetId, function(response) {
-            vm.widget = response;
-        });
+        var promise = WidgetService.findAllWidgetsForPage(pageId);
+        promise.then(
+            function(response){
+                vm.widgets = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
+        var promise1 = WidgetService.findWidgetById(widgetId);
+        promise1.then(
+            function(response){
+                vm.widget = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
         function updateWidget(updateWidget) {
-            WidgetService.updateWidget(pageId, updateWidget, function(response) {
-                $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
-            });
+            var promise = WidgetService.updateWidget(widgetId, updateWidget);
+            promise.then(
+                function(response){
+                    $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         function deleteWidget() {
-            WidgetService.deleteWidget(widgetId, function(response) {
-                $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+            var promise = WidgetService.deleteWidget(widgetId);
+            promise.then(
+                function(response){
+                    $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
 
-            });
         }
         vm.pageId = pageId;
         vm.websiteId = websiteId;

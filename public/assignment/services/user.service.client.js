@@ -1,56 +1,50 @@
 /**
  * Created by CherylRuo on 10/7/16.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .factory("UserService", UserService);
     function UserService($http) {
         var api = {
-            createUser   : createUser,
-            findUserById : findUserById,
-            findUserByUsername : findUserByUsername,
-            findUserByCredentials : findUserByCredentials,
-            updateUser : updateUser,
-            unregisterUser : unregisterUser
+            createUser: createUser,
+            findUserById: findUserById,
+            findUserByUsername: findUserByUsername,
+            findUserByCredentials: findUserByCredentials,
+            updateUser: updateUser,
+            unregisterUser: unregisterUser
         };
         return api;
 
-        function createUser(user, callback) {
-            $http
+        function createUser(user) {
+            return $http
                 .post("/api/user/", user)
-                .success(callback);
         }
 
-        function findUserById(id, callback) {
-            $http
+        function findUserById(id) {
+            return $http
                 .get("/api/user/" + id)
-                .success(callback);
         }
 
-        function findUserByUsername(username, callback) {
-            $http
+        function findUserByUsername(username) {
+            return $http
                 .get("/api/user?username=" + username)
-                .success(callback);
         }
 
-        function findUserByCredentials(username, password, callback) {
-            $http
-                .get("/api/user?username="+username + "&password=" + password)
-                .success(callback);
+        function findUserByCredentials(username, password) {
+            return $http
+                .get("/api/user?username=" + username + "&password=" + password)
 
         }
 
-        function updateUser(userId, user, callback) {
-            $http
+        function updateUser(userId, user) {
+            return $http
                 .put("/api/user/" + userId, user)
-                .success(callback);
         }
 
-        function unregisterUser(userId, callback) {
-            $http
+        function unregisterUser(userId) {
+            return $http
                 .delete("/api/user/" + userId)
-                .success(callback);
         }
     }
 })();

@@ -11,28 +11,43 @@
     function WebsiteListController($routeParams, WebsiteService) {
         var vm = this;
         var userId = parseInt($routeParams.uid);
-        WebsiteService.findAllWebsitesForUser(userId, function(response) {
-            vm.websites = response;
-        });
+        var promise = WebsiteService.findAllWebsitesForUser(userId);
+        promise.then(
+            function(response){
+                vm.websites = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.userId = userId;
     }
 
     function NewWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
         var userId = parseInt($routeParams.uid);
-        WebsiteService.findAllWebsitesForUser(userId, function(response) {
-            vm.websites = response;
-        });
+        var promise = WebsiteService.findAllWebsitesForUser(userId);
+        promise.then(
+            function(response) {
+                vm.websites = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.createWebsite = createWebsite;
         function createWebsite(website) {
             if(website == null) {
                 vm.alert = "Please create a website.";
                 return;
             }
-            WebsiteService.createWebsite(vm.userId, website, function(response) {
-                vm.website = response;
-                $location.url("/user/"+ userId +"/website");
-            });
+            var promise = WebsiteService.createWebsite(vm.userId, website);
+            promise.then(
+                function(response){
+                    vm.website = response.data;
+                    $location.url("/user/"+ userId +"/website");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         vm.userId = userId;
     }
@@ -41,23 +56,43 @@
         var vm = this;
         var userId = parseInt($routeParams.uid);
         var websiteId = parseInt($routeParams.wid);
-        WebsiteService.findWebsiteById(websiteId, function(response) {
-            vm.website = response;
-        });
-        WebsiteService.findAllWebsitesForUser(userId, function(response) {
-            vm.websites = response;
-        });
+        var promise = WebsiteService.findWebsiteById(websiteId);
+        promise.then(
+            function(response){
+                vm.website = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
+        var promise1 = WebsiteService.findAllWebsitesForUser(userId);
+        promise1.then(
+            function(response){
+                vm.websites = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
         function updateWebsite(updateWebsite) {
-            WebsiteService.updateWebsite(websiteId, updateWebsite, function(response) {
-                $location.url("/user/" + userId + "/website");
-            });
+            var promise = WebsiteService.updateWebsite(websiteId, updateWebsite);
+            promise.then(
+                function(response){
+                    $location.url("/user/" + userId + "/website");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(websiteId, function(response) {
-                $location.url("/user/" + userId + "/website");
-            });
+            var promise = WebsiteService.deleteWebsite(websiteId);
+            promise.then(
+                function(response){
+                    $location.url("/user/" + userId + "/website");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         vm.userId = userId;
         vm.websiteId = websiteId;

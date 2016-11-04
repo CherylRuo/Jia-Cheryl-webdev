@@ -15,34 +15,29 @@
         };
         return api;
 
-        function createWebsite(userId, website, callback) {
-            $http
+        function createWebsite(userId, website) {
+            return $http
                 .post("/api/user/" + userId + "/website", website)
-                .success(callback);
         }
 
-        function findAllWebsitesForUser(userId, callback) {
-            $http
+        function findAllWebsitesForUser(userId) {
+            return $http
                 .get("/api/user/" + userId + "/website")
-                .success(callback);
         }
 
-        function findWebsiteById(websiteId, callback) {
-            $http
+        function findWebsiteById(websiteId) {
+            return $http
                 .get("/api/website/" + websiteId)
-                .success(callback);
         }
 
-        function updateWebsite(websiteId, website, callback) {
-            $http
+        function updateWebsite(websiteId, website) {
+            return $http
                 .put("/api/website/" + websiteId, website)
-                .success(callback);
         }
 
-        function deleteWebsite(websiteId, callback) {
-            $http
+        function deleteWebsite(websiteId) {
+            return $http
                 .delete("/api/website/" + websiteId)
-                .success(callback);
         }
     }
 })();

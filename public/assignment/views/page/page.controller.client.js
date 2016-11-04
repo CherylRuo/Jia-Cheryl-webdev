@@ -11,9 +11,14 @@
         var vm = this;
         var websiteId = parseInt($routeParams.wid);
         var userId = parseInt($routeParams.uid);
-        PageService.findAllPagesForWebsite(websiteId, function(response) {
-            vm.pages = response;
-        });
+        var promise = PageService.findAllPagesForWebsite(websiteId);
+        promise.then(
+            function(response) {
+                vm.pages = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.userId = userId;
         vm.websiteId = websiteId;
     }
@@ -22,18 +27,28 @@
         var vm = this;
         var websiteId = parseInt($routeParams.wid);
         var userId = parseInt($routeParams.uid);
-        PageService.findAllPagesForWebsite(websiteId, function(response) {
-            vm.pages = response;
-        });
+        var promise = PageService.findAllPagesForWebsite(websiteId);
+        promise.then(
+            function(response) {
+                vm.pages = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.createPage = createPage;
         function createPage(page) {
             if(page == null) {
                 vm.alert = "Please create a new page.";
                 return;
             }
-            PageService.createPage(vm.websiteId, page, function(response) {
-                $location.url("/user/" + userId + "/website/" + websiteId + "/page");
-            });
+            var promise = PageService.createPage(vm.websiteId, page);
+            promise.then(
+                function(response) {
+                    $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         vm.websiteId = websiteId;
         vm.userId = userId;
@@ -44,23 +59,43 @@
         var pageId = parseInt($routeParams.pid);
         var userId = parseInt($routeParams.uid);
         var websiteId = parseInt($routeParams.wid);
-        PageService.findAllPagesForWebsite(websiteId, function(response) {
-            vm.pages = response;
-        });
-        PageService.findPageById(pageId, function(response) {
-            vm.page = response;
-        });
+        var promise = PageService.findAllPagesForWebsite(websiteId);
+        promise.then(
+            function(response) {
+                vm.pages = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
+        var promise1 = PageService.findPageById(pageId);
+        promise1.then(
+            function(response){
+                vm.page = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
         function updatePage(updatePage) {
-            PageService.updatePage(pageId, updatePage, function(response) {
-                $location.url("/user/" + userId + "/website/" + websiteId +"/page");
-            });
+            var promise = PageService.updatePage(pageId, updatePage);
+            promise.then(
+                function(response) {
+                    $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         function deletePage() {
-            PageService.deletePage(pageId, function(response) {
-                $location.url("/user/" + userId + "/website/" + websiteId +"/page");
-            });
+            var promise = PageService.deletePage(pageId);
+            promise.then(
+                function(response) {
+                    $location.url("/user/" + userId + "/website/" + websiteId +"/page");
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
         vm.pageId = pageId;
         vm.websiteId = websiteId;

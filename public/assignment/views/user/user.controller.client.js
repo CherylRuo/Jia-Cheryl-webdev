@@ -8,23 +8,28 @@
         .controller("RegisterController", RegisterController)
         .controller("ProfileController", ProfileController);
 
-    function LoginController($location, $http, UserService) {
+    function LoginController($location, UserService) {
         var vm = this;
         vm.login = login;
 
         function login(username, password) {
-            UserService.findUserByCredentials(username, password, function(response) {
-                vm.user = response;
-                if(vm.user == null) {
-                    vm.alert = "No such user";
-                } else {
-                    $location.url("/user/" + vm.user._id);
-                }
-            });
+            var promise = UserService.findUserByCredentials(username, password);
+            promise.then(
+                    function(response) {
+                    vm.user = response.data;
+                    if (vm.user == null) {
+                        vm.alert = "No such user";
+                    } else {
+                        $location.url("/user/" + vm.user._id);
+                    }
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
     }
 
-    function RegisterController($location, $http, UserService) {
+    function RegisterController($location, UserService) {
         var vm = this;
         vm.createUser = createUser;
         function createUser(user) {
@@ -32,23 +37,40 @@
                 vm.alert = "incorrect verify password";
                 return;
             }
-            UserService.createUser(user, function(response) {
-                vm.user._id = response._id;
-                $location.url("/user/" + vm.user._id);
-            });
+            var promise = UserService.createUser(user);
+            promise.then(
+                function(response) {
+                    vm.user._id = response.data._id;
+                    $location.url("/user/" + vm.user._id);
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
     }
 
-    function ProfileController($location, $routeParams, $http, UserService) {
+    function ProfileController($location, $routeParams, UserService) {
         var vm = this;
         var userId = parseInt($routeParams.uid);
-        UserService.findUserById(userId, function(response) {
-            vm.user = response;
-        });
+        var promise = UserService.findUserById(userId);
+        promise.then(
+            function(response)
+            {
+                vm.user = response.data;
+            },
+            function (httpError) {
+                throw httpError.status + " : " + httpError.data;
+            });
         vm.updateUser = updateUser;
         function updateUser(updateUser) {
-            UserService.updateUser(userId, updateUser, function(response) {});
-            $location.url("/user/" + userId);
+            var promise = UserService.updateUser(userId, updateUser);
+            promise.then(
+                function(response) {
+                    $location.url("/user/" + userId);
+                },
+                function (httpError) {
+                    throw httpError.status + " : " + httpError.data;
+                });
         }
     }
 })();

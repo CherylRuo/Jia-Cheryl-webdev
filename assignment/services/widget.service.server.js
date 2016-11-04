@@ -92,12 +92,18 @@ module.exports = function (app) {
     function updateWidget(req, res) {
         var id = req.params['widgetId'];
         var widget = req.body;
+        console.log(widget);
         for (var w in widgets) {
             var widget1 = widgets[w];
             if (widget1._id == id) {
-                widget1.name = widget.name;
                 widget1.developerId = widget.developerId;
-                widget1.description = widget.description;
+                widget1.text = widget.text;
+                console.log(widget1.typeName);
+                if(widget1.widgetType === "YOUTUBE") {
+                    widget1.url = widget.url;
+                }
+                widget1.size = widget.size;
+                widget1.width = widget.width;
             }
         }
         res.json(widgets);
