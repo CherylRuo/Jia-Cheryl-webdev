@@ -52,14 +52,6 @@ module.exports = function (app) {
         }
     }
 
-    function selectPhoto(photo) {
-        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-        url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-        WidgetService
-            .updateWidget(websiteId, pageId, widgetId, {url: url})
-            // .then(...);
-    }
-
     function createWidget(req, res) {
         var widget = req.body;
         widgets.sort();

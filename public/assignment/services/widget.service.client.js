@@ -11,7 +11,8 @@
             findAllWidgetsForPage : findAllWidgetsForPage,
             findWidgetById   : findWidgetById,
             updateWidget : updateWidget,
-            deleteWidget : deleteWidget
+            deleteWidget : deleteWidget,
+            updateImage : updateImage
         };
         return api;
 
@@ -33,6 +34,11 @@
         function updateWidget(widgetId, widget) {
             return $http
                 .put("/api/widget/" + widgetId, widget)
+        }
+
+        function updateImage(widgetId, url) {
+            return $http
+                .put("/api/widget/" + widgetId, url)
         }
 
         function deleteWidget(widgetId) {
