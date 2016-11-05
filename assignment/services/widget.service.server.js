@@ -42,6 +42,9 @@ module.exports = function (app) {
         var destination   = myFile.destination;  // folder where file is saved to
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var pageId = req.body.pageId;
 
         for(var w in widgets) {
             var widget = widgets[w];
@@ -50,6 +53,7 @@ module.exports = function (app) {
                 widget.width = width;
             }
         }
+        res.redirect('../assignment/index.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
     }
 
     function createWidget(req, res) {
@@ -90,12 +94,10 @@ module.exports = function (app) {
             if (widget1._id == id) {
                 widget1.developerId = widget.developerId;
                 widget1.text = widget.text;
-                console.log(widget1.typeName);
-                if(widget1.widgetType === "YOUTUBE") {
-                    widget1.url = widget.url;
-                }
+                widget1.url = widget.url;
                 widget1.size = widget.size;
                 widget1.width = widget.width;
+                console.log("Hello: "+ widget1.url);
             }
         }
         res.json(widgets);
