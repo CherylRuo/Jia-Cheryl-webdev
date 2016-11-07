@@ -77,7 +77,10 @@
         var userId = parseInt($routeParams.uid);
         var pageId = parseInt($routeParams.pid);
         var widgetId = parseInt($routeParams.wgid);
-        var widget = null;
+        vm.pageId = pageId;
+        vm.websiteId = websiteId;
+        vm.userId = userId;
+        vm.widgetId = widgetId;
         var promise = WidgetService.findAllWidgetsForPage(pageId);
         promise.then(
             function(response){
@@ -117,9 +120,5 @@
                 });
 
         }
-        vm.pageId = pageId;
-        vm.websiteId = websiteId;
-        vm.userId = userId;
-        vm.widgetId = widgetId;
     }
 })();

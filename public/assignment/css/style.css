@@ -3,8 +3,9 @@ input.form-control {
 }
 
 body {
-    overflow-y: scroll;
+    overflow: scroll;
     padding-top: 60px;
+    padding-bottom: 60px;
     background: url('../images/1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -14,11 +15,10 @@ body {
 
 #home {
     font-family: Georgia;
-    overflow-y: scroll;
+    overflow: scroll;
     color: royalblue;
     padding-top: 10px;
     padding-left: 10px;
-    overflow: auto;
     background: url('../images/2.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;

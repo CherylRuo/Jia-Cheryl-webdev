@@ -8,7 +8,10 @@ module.exports = function (app) {
         {_id: 456, name: "Gizmodo", developerId: 456, description: "gizmodo"},
         {_id: 567, name: "Tic Tac Toe", developerId: 123, description: "tic tac toe"},
         {_id: 678, name: "Checkers", developerId: 123, description: "checkers"},
-        {_id: 789, name: "Chess", developerId: 234, description: "chess"}
+        {_id: 789, name: "Diary", developerId: 234, description: "chess"},
+        {_id: 1, name: "Collection", developerId: 234, description: "poker"},
+        {_id: 2, name: "Schedule", developerId: 234, description: "black jack"}
+
     ];
 
     app.post('/api/user/:userId/website', createWebsite);
@@ -62,7 +65,7 @@ module.exports = function (app) {
 
     function deleteWebsite(req, res) {
         var id = req.params['websiteId'];
-        for(var i=0; i<websites.length; i++) {
+        for(var i=websites.length-1; i>=0; i--) {
             if(websites[i]._id == id)
                 websites.splice(i, 1);
         }

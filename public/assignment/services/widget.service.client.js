@@ -7,14 +7,21 @@
         .factory("WidgetService", WidgetService);
     function WidgetService($http) {
         var api = {
-            createWidget   : createWidget,
+            createWidget : createWidget,
             findAllWidgetsForPage : findAllWidgetsForPage,
-            findWidgetById   : findWidgetById,
+            findWidgetById : findWidgetById,
             updateWidget : updateWidget,
             deleteWidget : deleteWidget,
-            updateImage : updateImage
+            updateImage : updateImage,
+            sort : sort
         };
         return api;
+        function sort(start, end, pageId) {
+            var url = "/api/page/" + pageId + "/widget?start=START&end=END";
+            url = url.replace("START", start)
+                .replace("END", end);
+            $http.put(url);
+        }
 
         function createWidget(pageId, widget) {
             return $http

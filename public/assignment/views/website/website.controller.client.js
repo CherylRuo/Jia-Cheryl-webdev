@@ -56,6 +56,7 @@
         var vm = this;
         var userId = parseInt($routeParams.uid);
         var websiteId = parseInt($routeParams.wid);
+
         var promise = WebsiteService.findWebsiteById(websiteId);
         promise.then(
             function(response){

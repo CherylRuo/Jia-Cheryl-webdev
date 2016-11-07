@@ -6,7 +6,13 @@ module.exports = function (app) {
         {_id: 321, name: "Post 1", websiteId: 456},
         {_id: 432, name: "Post 2", websiteId: 456},
         {_id: 543, name: "Post 3", websiteId: 456},
-        {_id: 246, name: "Post 4", websiteId: 789}
+        {_id: 246, name: "Travel Diary", websiteId: 789},
+        {_id: 2, name: "Foodie", websiteId: 789},
+        {_id: 3, name: "Daily", websiteId: 789},
+        {_id: 4, name: "Fashion", websiteId: 1},
+        {_id: 6, name: "Music", websiteId: 1},
+        {_id: 5, name: "Coding", websiteId: 1},
+        {_id: 11, name: "Interview", websiteId: 2}
     ];
 
     app.post('/api/website/:websiteId/page', createPage);
@@ -60,7 +66,7 @@ module.exports = function (app) {
 
     function deletePage(req, res) {
         var id = req.params["pageId"];
-        for(var i=0; i<pages.length; i++) {
+        for(var i=pages.length-1; i>=0; i--) {
             if(pages[i]._id == id)
                 pages.splice(i, 1);
         }

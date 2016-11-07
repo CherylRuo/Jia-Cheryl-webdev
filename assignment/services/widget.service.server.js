@@ -7,20 +7,45 @@ module.exports = function (app) {
     var express = require('express');
 
     var widgets = [
-        {_id: 123, widgetType: "HEADER", pageId: 246, size: 2, text: "GIZMODO"},
+        {_id: 123, widgetType: "HEADER", pageId: 246, size: 2, text: "Cruise"},
         {_id: 234, widgetType: "HEADER", pageId: 321, size: 4, text: "Lorem ipsum"},
         {
             _id: 345, widgetType: "IMAGE", pageId: 246, text: "image", width: "100%",
-            url: "https://pbs.twimg.com/profile_images/749999977145987073/TIBx9FL__400x400.jpg"
+            url: "http://images.r.cruisecritic.com/features/2016/03/10-lux-cruise-main.jpg"
         },
-        {_id: 456, widgetType: "HTML", pageId: 246, text: "<p>Lorem ipsum</p>"},
+        {_id: 456, widgetType: "HTML", pageId: 246, text: "<p>Cruise log</p>"},
         {_id: 567, widgetType: "HEADER", pageId: 321, size: 4, text: "Lorem ipsum"},
         {
             _id: 678, widgetType: "YOUTUBE", pageId: 246, text: "youtube", width: "100%",
             url: "https://youtu.be/AM2Ivdi9c4E"
         },
         {_id: 135, widgetType: "HTML", pageId: 222, text: "<p>Lorem ipsum</p>"},
-        {_id: 234, widgetType: "HTML", pageId: 259, text: "<p>Lorem ipsum</p>"}
+        {_id: 234, widgetType: "HTML", pageId: 259, text: "<p>Lorem ipsum</p>"},
+        {_id: 234, widgetType: "HEADER", pageId: 4, size: 4, text: "Chanel"},
+        {
+            _id: 345, widgetType: "IMAGE", pageId: 4, text: "image", width: "100%",
+            url: "https://trr-sales-images-production.s3.amazonaws.com/uploads/" +
+            "landing_page/image/62/Chanel-Top-Level-SEO-Landing.jpg"
+        },
+        {_id: 567, widgetType: "HEADER", pageId: 6, size: 4, text: "Yesenia"},
+        {
+            _id: 678, widgetType: "YOUTUBE", pageId: 6, text: "youtube", width: "100%",
+            url: "https://www.youtube.com/watch?v=HX_d3-a0KT4&list=PLIb3luYqpTIpgGlu4NcMAOj9qlPoyVeDT"
+        },
+        {_id: 2, widgetType: "HEADER", pageId: 5, size: 4, text: "How to create a MEAN stack web application?"},
+        {_id: 456, widgetType: "HTML", pageId: 5, text: "<p>https://www.codeschool.com/mean</p>"},
+        {_id: 234, widgetType: "HEADER", pageId: 2, size: 4, text: "Matcha Ice Cream"},
+        {
+            _id: 345, widgetType: "IMAGE", pageId: 2, text: "image", width: "100%",
+            url: "http://www.supernummy.com/wp-content/uploads/2015/05/Green-Tea-Ice-Cream-1-of-1.jpg?x31672"
+        },
+        {_id: 234, widgetType: "HEADER", pageId: 3, size: 4, text: "Favorite Halloween Costume!!!"},
+        {
+            _id: 345, widgetType: "IMAGE", pageId: 3, text: "image", width: "100%",
+            url: "https://spirit.scene7.com/is/image/Spirit/01327139-d?$Thumbnail$"
+        },
+        {_id: 456, widgetType: "HTML", pageId: 11, text: "<p>Time: October 28, 2016. Wednesday. 2PM." +
+        "<br>Company Name: XXX</p>"}
     ];
 
     app.post ("/api/upload", upload.single('myFile'), uploadImage);
@@ -28,23 +53,24 @@ module.exports = function (app) {
     app.get('/api/page/:pageId/widget', findAllWidgetsForPage);
     app.get('/api/widget/:widgetId', findWidgetById);
     app.put('/api/widget/:widgetId', updateWidget);
+    app.put('/api/page/:pageId/widget', updateWidgetOrder);
     app.delete('/api/widget/:widgetId', deleteWidget);
 
 
 
     function uploadImage(req, res) {
-        var widgetId      = req.body.widgetId;
-        var width         = req.body.width;
         var myFile        = req.file;
-        var originalname  = myFile.originalname; // file name on user's computer
-        var filename      = myFile.filename;     // new file name in upload folder
-        var path          = myFile.path;         // full path of uploaded file
-        var destination   = myFile.destination;  // folder where file is saved to
-        var size          = myFile.size;
-        var mimetype      = myFile.mimetype;
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
         var pageId = req.body.pageId;
+        var widgetId      = req.body.widgetId;
+        if(myFile == null) {
+            res.redirect('../assignment/index.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
+            return;
+        }
+        var width         = req.body.width;
+        var filename      = myFile.filename;     // new file name in upload folder
+
 
         for(var w in widgets) {
             var widget = widgets[w];
@@ -88,7 +114,6 @@ module.exports = function (app) {
     function updateWidget(req, res) {
         var id = req.params['widgetId'];
         var widget = req.body;
-        console.log(widget);
         for (var w in widgets) {
             var widget1 = widgets[w];
             if (widget1._id == id) {
@@ -97,10 +122,26 @@ module.exports = function (app) {
                 widget1.url = widget.url;
                 widget1.size = widget.size;
                 widget1.width = widget.width;
-                console.log("Hello: "+ widget1.url);
             }
         }
         res.json(widgets);
+    }
+
+    function updateWidgetOrder(req, res) {
+        var start = req.query.start;
+        var end = req.query.end;
+        var pageId = req.params.pageId;
+        var curWidgets = [];
+        for(var i=widgets.length-1; i>=0; i--) {
+            if (widgets[i].pageId == pageId) {
+                curWidgets.splice(0, 0, widgets[i]);
+                widgets.splice(i, 1);
+            }
+        }
+        var element = curWidgets.splice(start, 1)[0];
+        curWidgets.splice(end, 0, element);
+        widgets = widgets.concat(curWidgets);
+        res.send(widgets);
     }
 
     function deleteWidget(req, res) {
