@@ -3,16 +3,13 @@
  */
 module.exports = function (app) {
     var pages = [
-        {_id: 321, name: "Post 1", websiteId: 456},
-        {_id: 432, name: "Post 2", websiteId: 456},
-        {_id: 543, name: "Post 3", websiteId: 456},
-        {_id: 246, name: "Travel Diary", websiteId: 789},
-        {_id: 2, name: "Foodie", websiteId: 789},
-        {_id: 3, name: "Daily", websiteId: 789},
-        {_id: 4, name: "Fashion", websiteId: 1},
-        {_id: 6, name: "Music", websiteId: 1},
-        {_id: 5, name: "Coding", websiteId: 1},
-        {_id: 11, name: "Interview", websiteId: 2}
+        {_id: 1, name: "Travel Diary", websiteId: 6},
+        {_id: 2, name: "Foodie", websiteId: 6},
+        {_id: 3, name: "Daily", websiteId: 6},
+        {_id: 4, name: "Fashion", websiteId: 7},
+        {_id: 5, name: "Music", websiteId: 7},
+        {_id: 6, name: "Coding", websiteId: 7},
+        {_id: 7, name: "Interview", websiteId: 8}
     ];
 
     app.post('/api/website/:websiteId/page', createPage);

@@ -7,44 +7,40 @@ module.exports = function (app) {
     var express = require('express');
 
     var widgets = [
-        {_id: 123, widgetType: "HEADER", pageId: 246, size: 2, text: "Cruise"},
-        {_id: 234, widgetType: "HEADER", pageId: 321, size: 4, text: "Lorem ipsum"},
+        {_id: 1, widgetType: "HEADER", pageId: 1, size: 2, text: "Cruise"},
         {
-            _id: 345, widgetType: "IMAGE", pageId: 246, text: "image", width: "100%",
+            _id: 3, widgetType: "IMAGE", pageId: 1, text: "image", width: "100%",
             url: "http://images.r.cruisecritic.com/features/2016/03/10-lux-cruise-main.jpg"
         },
-        {_id: 456, widgetType: "HTML", pageId: 246, text: "<p>Cruise log</p>"},
-        {_id: 567, widgetType: "HEADER", pageId: 321, size: 4, text: "Lorem ipsum"},
+        {_id: 4, widgetType: "HTML", pageId: 1, text: "<p>Cruise log</p>"},
         {
-            _id: 678, widgetType: "YOUTUBE", pageId: 246, text: "youtube", width: "100%",
+            _id: 6, widgetType: "YOUTUBE", pageId: 1, text: "youtube", width: "100%",
             url: "https://youtu.be/AM2Ivdi9c4E"
         },
-        {_id: 135, widgetType: "HTML", pageId: 222, text: "<p>Lorem ipsum</p>"},
-        {_id: 234, widgetType: "HTML", pageId: 259, text: "<p>Lorem ipsum</p>"},
-        {_id: 234, widgetType: "HEADER", pageId: 4, size: 4, text: "Chanel"},
+        {_id: 9, widgetType: "HEADER", pageId: 4, size: 4, text: "Chanel"},
         {
-            _id: 345, widgetType: "IMAGE", pageId: 4, text: "image", width: "100%",
+            _id: 10, widgetType: "IMAGE", pageId: 4, text: "image", width: "100%",
             url: "https://trr-sales-images-production.s3.amazonaws.com/uploads/" +
             "landing_page/image/62/Chanel-Top-Level-SEO-Landing.jpg"
         },
-        {_id: 567, widgetType: "HEADER", pageId: 6, size: 4, text: "Yesenia"},
+        {_id: 11, widgetType: "HEADER", pageId: 6, size: 4, text: "Yesenia"},
         {
-            _id: 678, widgetType: "YOUTUBE", pageId: 6, text: "youtube", width: "100%",
+            _id: 12, widgetType: "YOUTUBE", pageId: 6, text: "youtube", width: "100%",
             url: "https://www.youtube.com/watch?v=HX_d3-a0KT4&list=PLIb3luYqpTIpgGlu4NcMAOj9qlPoyVeDT"
         },
-        {_id: 2, widgetType: "HEADER", pageId: 5, size: 4, text: "How to create a MEAN stack web application?"},
-        {_id: 456, widgetType: "HTML", pageId: 5, text: "<p>https://www.codeschool.com/mean</p>"},
-        {_id: 234, widgetType: "HEADER", pageId: 2, size: 4, text: "Matcha Ice Cream"},
+        {_id: 13, widgetType: "HEADER", pageId: 5, size: 4, text: "How to create a MEAN stack web application?"},
+        {_id: 14, widgetType: "HTML", pageId: 5, text: "<p>https://www.codeschool.com/mean</p>"},
+        {_id: 15, widgetType: "HEADER", pageId: 2, size: 4, text: "Matcha Ice Cream"},
         {
-            _id: 345, widgetType: "IMAGE", pageId: 2, text: "image", width: "100%",
+            _id: 16, widgetType: "IMAGE", pageId: 2, text: "image", width: "100%",
             url: "http://www.supernummy.com/wp-content/uploads/2015/05/Green-Tea-Ice-Cream-1-of-1.jpg?x31672"
         },
-        {_id: 234, widgetType: "HEADER", pageId: 3, size: 4, text: "Favorite Halloween Costume!!!"},
+        {_id: 17, widgetType: "HEADER", pageId: 3, size: 4, text: "Favorite Halloween Costume!!!"},
         {
-            _id: 345, widgetType: "IMAGE", pageId: 3, text: "image", width: "100%",
+            _id: 18, widgetType: "IMAGE", pageId: 3, text: "image", width: "100%",
             url: "https://spirit.scene7.com/is/image/Spirit/01327139-d?$Thumbnail$"
         },
-        {_id: 456, widgetType: "HTML", pageId: 11, text: "<p>Time: October 28, 2016. Wednesday. 2PM." +
+        {_id: 19, widgetType: "HTML", pageId: 7, text: "<p>Time: October 28, 2016. Wednesday. 2PM." +
         "<br>Company Name: XXX</p>"}
     ];
 

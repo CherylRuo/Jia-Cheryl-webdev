@@ -3,14 +3,14 @@
  */
 module.exports = function (app) {
     var websites = [
-        {_id: 123, name: "Facebook", developerId: 456, description: "facebook"},
-        {_id: 234, name: "Tweeter", developerId: 456, description: "tweeter"},
-        {_id: 456, name: "Gizmodo", developerId: 456, description: "gizmodo"},
-        {_id: 567, name: "Tic Tac Toe", developerId: 123, description: "tic tac toe"},
-        {_id: 678, name: "Checkers", developerId: 123, description: "checkers"},
-        {_id: 789, name: "Diary", developerId: 234, description: "chess"},
-        {_id: 1, name: "Collection", developerId: 234, description: "poker"},
-        {_id: 2, name: "Schedule", developerId: 234, description: "black jack"}
+        {_id: 1, name: "Facebook", developerId: 456, description: "facebook"},
+        {_id: 2, name: "Tweeter", developerId: 456, description: "tweeter"},
+        {_id: 3, name: "Gizmodo", developerId: 456, description: "gizmodo"},
+        {_id: 4, name: "Tic Tac Toe", developerId: 123, description: "tic tac toe"},
+        {_id: 5, name: "Checkers", developerId: 123, description: "checkers"},
+        {_id: 6, name: "Diary", developerId: 234, description: "diary"},
+        {_id: 7, name: "Collection", developerId: 234, description: "poker"},
+        {_id: 8, name: "Schedule", developerId: 234, description: "black jack"}
 
     ];
 
