@@ -23,13 +23,13 @@ module.exports = function (app) {
             url: "https://trr-sales-images-production.s3.amazonaws.com/uploads/" +
             "landing_page/image/62/Chanel-Top-Level-SEO-Landing.jpg"
         },
-        {_id: 11, widgetType: "HEADER", pageId: 6, size: 4, text: "Yesenia"},
+        {_id: 11, widgetType: "HEADER", pageId: 5, size: 4, text: "Yesenia"},
         {
-            _id: 12, widgetType: "YOUTUBE", pageId: 6, text: "youtube", width: "100%",
+            _id: 12, widgetType: "YOUTUBE", pageId: 5, text: "youtube", width: "100%",
             url: "https://www.youtube.com/watch?v=HX_d3-a0KT4&list=PLIb3luYqpTIpgGlu4NcMAOj9qlPoyVeDT"
         },
-        {_id: 13, widgetType: "HEADER", pageId: 5, size: 4, text: "How to create a MEAN stack web application?"},
-        {_id: 14, widgetType: "HTML", pageId: 5, text: "<p>https://www.codeschool.com/mean</p>"},
+        {_id: 13, widgetType: "HEADER", pageId: 6, size: 4, text: "How to create a MEAN stack web application?"},
+        {_id: 14, widgetType: "HTML", pageId: 6, text: "<p>https://www.codeschool.com/mean</p>"},
         {_id: 15, widgetType: "HEADER", pageId: 2, size: 4, text: "Matcha Ice Cream"},
         {
             _id: 16, widgetType: "IMAGE", pageId: 2, text: "image", width: "100%",
