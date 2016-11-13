@@ -35,7 +35,8 @@
         var pageId = parseInt($routeParams.pid);
 
         function sort(start, end) {
-            WidgetService.sort(start, end, pageId);
+            var promise = WidgetService.sort(start, end, pageId);
+            promise.then();
         }
     }
 })();

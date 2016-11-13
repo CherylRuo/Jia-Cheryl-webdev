@@ -43,14 +43,6 @@
         var websiteId = parseInt($routeParams.wid);
         var userId = parseInt($routeParams.uid);
         var pageId = parseInt($routeParams.pid);
-        var promise = WidgetService.findAllWidgetsForPage(pageId);
-        promise.then(
-            function(response){
-                vm.widgets = response.data;
-            },
-            function (httpError) {
-                throw httpError.status + " : " + httpError.data;
-            });
         vm.createWidget = createWidget;
         function createWidget(widget) {
             if(widget == null) {

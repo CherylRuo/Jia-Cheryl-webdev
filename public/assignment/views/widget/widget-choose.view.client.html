@@ -23,10 +23,29 @@
 
 <div class="container">
     <ul>
-        <li ng-repeat="widget in model.widgets">
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"
-               class="nounderline">
-                {{widget.widgetType}}
+        <li>
+            <a ng-click="model.createWidget(model.widget)" class="navbar-link">
+                HEADER
+            </a>
+        </li>
+        <li>
+            <a ng-click="model.createWidget(model.widget)" class="navbar-link">
+                IMAGE
+            </a>
+        </li>
+        <li>
+            <a ng-click="model.createWidget(model.widget)" class="navbar-link">
+                HTML
+            </a>
+        </li>
+        <li>
+            <a ng-click="model.createWidget(model.widget)" class="navbar-link">
+                YOUTUBE
+            </a>
+        </li>
+        <li>
+            <a ng-click="model.createWidget(model.widget)" class="navbar-link">
+                TEXT
             </a>
         </li>
     </ul>

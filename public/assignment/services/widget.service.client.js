@@ -20,7 +20,7 @@
             var url = "/api/page/" + pageId + "/widget?start=START&end=END";
             url = url.replace("START", start)
                 .replace("END", end);
-            $http.put(url);
+            return $http.put(url);
         }
 
         function createWidget(pageId, widget) {
