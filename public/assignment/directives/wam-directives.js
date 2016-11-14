@@ -3,9 +3,9 @@
  */
 (function() {
     angular
-        .module("jpa-directives", [])
-        .directive("sortable", sortable);
-    function sortable() {
+        .module("wamDirectives", [])
+        .directive("wamSortable", wamSortable);
+    function wamSortable() {
         function linker(scope, element) {
             var start = -1;
             var end = -1;

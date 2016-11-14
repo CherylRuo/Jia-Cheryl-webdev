@@ -44,15 +44,14 @@
         var userId = parseInt($routeParams.uid);
         var pageId = parseInt($routeParams.pid);
         vm.createWidget = createWidget;
-        function createWidget(widget) {
-            if(widget == null) {
-                vm.alert = "Please create a new widget.";
-                return;
-            }
+        function createWidget(widgetType) {
+            var widget = {};
+            widget.type = widgetType;
             var promise = WidgetService.createWidget(vm.pageId, widget);
             promise.then(
                 function(response){
-                    $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
+                    var widgetId = response.data._id;
+                    $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
                 },
                 function (httpError) {
                     throw httpError.status + " : " + httpError.data;
@@ -73,16 +72,8 @@
         vm.websiteId = websiteId;
         vm.userId = userId;
         vm.widgetId = widgetId;
-        var promise = WidgetService.findAllWidgetsForPage(pageId);
+        var promise = WidgetService.findWidgetById(widgetId);
         promise.then(
-            function(response){
-                vm.widgets = response.data;
-            },
-            function (httpError) {
-                throw httpError.status + " : " + httpError.data;
-            });
-        var promise1 = WidgetService.findWidgetById(widgetId);
-        promise1.then(
             function(response){
                 vm.widget = response.data;
             },

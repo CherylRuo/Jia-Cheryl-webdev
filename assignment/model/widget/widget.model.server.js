@@ -3,9 +3,9 @@
  */
 var q = require("q");
 
-module.exports = function(db, mongoose) {
-    var WidgetModel  = mongoose.model('WidgetModel');
-    var PageModel  = mongoose.model('PageModel');
+module.exports = function (db, mongoose) {
+    var WidgetModel = mongoose.model('WidgetModel');
+    var PageModel = mongoose.model('PageModel');
 
     var api = {
         createWidget: createWidget,
@@ -19,13 +19,13 @@ module.exports = function(db, mongoose) {
 
     function createWidget(pageId, widget) {
         var deferred = q.defer();
-        console.log("Create a page.");
+        console.log("Create a widget.");
         widget._page = pageId;
 
-        WidgetModel.create(widget, function(err, widget) {
+        WidgetModel.create(widget, function (err, widget) {
             PageModel.findById(pageId, function (err, page) {
                 page.widgets.push(widget);
-                page.save(function (err, widget) {
+                page.save(function () {
                     deferred.resolve(widget);
                 });
             });
@@ -37,11 +37,22 @@ module.exports = function(db, mongoose) {
     function findAllWidgetsForPage(pageId) {
         var deferred = q.defer();
 
-        WidgetModel.find({_page: pageId}, function(err, widget){
-            if(err) {
+        PageModel.findById(pageId, function (err, page) {
+            if (err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(widget);
+                var widgetIds = page.widgets;
+                console.log(widgetIds);
+                WidgetModel.find({
+                    '_id': { $in: widgetIds}
+                }, function(err, widgets){
+                    widgets.sort(function(a, b) {
+                        // Sort widgets by the order of their _id values in ids.
+                        return widgetIds.indexOf(a._id) - widgetIds.indexOf(b._id);
+                    });
+                    console.log(widgets);
+                    deferred.resolve(widgets);
+                });
             }
         });
 
@@ -51,8 +62,8 @@ module.exports = function(db, mongoose) {
     function findWidgetById(widgetId) {
         var deferred = q.defer();
 
-        WidgetModel.findById({widgetId: widgetId}, function(err, widget){
-            if(err) {
+        WidgetModel.findById({_id: widgetId}, function (err, widget) {
+            if (err) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(widget);
@@ -67,8 +78,8 @@ module.exports = function(db, mongoose) {
 
         // widget.delete("_id");
 
-        WidgetModel.update({_id: widgetId}, {$set: widget}, function(err, widget) {
-            if(err) {
+        WidgetModel.update({_id: widgetId}, {$set: widget}, function (err, widget) {
+            if (err) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(widget);
@@ -80,12 +91,26 @@ module.exports = function(db, mongoose) {
 
     function deleteWidget(widgetId) {
         var deferred = q.defer();
-
-        WidgetModel.remove({_id: widgetId}, function(err, status) {
-            if(err) {
+        WidgetModel.findById(widgetId, function (err, widget) {
+            if (err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(status);
+                var pageId = widget._page;
+                WidgetModel.remove({_id: widgetId}, function (err, status) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(status);
+                        PageModel.findById(pageId, function (err, page) {
+                            var widgets = page.widgets;
+                            for (var i = widgets.length - 1; i > 0; i--) {
+                                if (widgets[i] == widgetId)
+                                    widgets.splice(i, 1);
+                            }
+                            page.save(function () {});
+                        });
+                    }
+                });
             }
         });
 
@@ -94,15 +119,18 @@ module.exports = function(db, mongoose) {
 
     function reorderWidget(pageId, start, end) {
         var deferred = q.defer();
-
-        WidgetModel.remove({pageId: pageId, start: start, end: end}, function(err, status) {
+        PageModel.findById(pageId, function (err, page) {
             if(err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(status);
+                var widgetIds = page.widgets;
+                var element = widgetIds[start];
+                widgetIds.splice(start, 1);
+                widgetIds.splice(end, 0, element);
+                page.widgets = widgetIds;
+                page.save(function () {});
             }
         });
-
         return deferred.promise;
     }
 };

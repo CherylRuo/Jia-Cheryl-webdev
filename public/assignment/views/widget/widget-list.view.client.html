@@ -33,8 +33,8 @@
 
 <div class="container">
     <ul>
-        <li sortable>
-            <div class="container-fluid row" ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+        <li wam-sortable>
+            <div class="container-fluid row" ng-switch="widget.type" ng-repeat="widget in model.widgets">
                 <div class="col-xs-12">
                     <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"
                        class="nounderline">
@@ -56,6 +56,14 @@
                         <img ng-src="{{widget.url}}">
                     </div>
                     <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
+                    </div>
+                    <div ng-switch-when="TEXT">
+                        <div ng-if="widget.formatted" text-angular ta-toolbar="..."></div>
+                        <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                               placeholder="{{widget.textInput.placeholder}}" class="form-control"/>
+                        <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                                  rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                                  class="form-control">{{widget.text}}</textarea>
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@ module.exports = function(db, mongoose) {
         PageModel.create(page, function(err, page) {
             WebsiteModel.findById(websiteId, function (err, website) {
                 website.pages.push(page);
-                website.save(function (err, page) {
+                website.save(function () {
                     deferred.resolve(page);
                 });
             });
@@ -79,12 +79,26 @@ module.exports = function(db, mongoose) {
 
     function deletePage(pageId) {
         var deferred = q.defer();
-
-        PageModel.remove({_id: pageId}, function(err, status) {
+        PageModel.findById(pageId, function(err, page){
             if(err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(status);
+                var websiteId = page._website;
+                PageModel.remove({_id: pageId}, function(err, status) {
+                    if(err) {
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(status);
+                        WebsiteModel.findById(websiteId, function (err, website) {
+                            var pages = website.pages;
+                            for(var i=pages.length-1; i>0; i--) {
+                                if(pages[i] == pageId)
+                                    pages.splice(i, 1);
+                            }
+                            website.save(function () {});
+                        });dbd
+                    }
+                });
             }
         });
 

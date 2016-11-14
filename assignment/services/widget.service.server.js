@@ -15,11 +15,12 @@ module.exports = function (app, model) {
     app.delete('/api/widget/:widgetId', deleteWidget);
 
     function uploadImage(req, res) {
-        var myFile        = req.file;
+        var myFile = req.file;
+        var widget = req.body;
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
         var pageId = req.body.pageId;
-        var widgetId      = req.body.widgetId;
+        var widgetId = req.body.widgetId;
         if(myFile == null) {
             res.redirect('../assignment/index.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
             return;
@@ -27,14 +28,15 @@ module.exports = function (app, model) {
         var width         = req.body.width;
         var filename      = myFile.filename;     // new file name in upload folder
 
+        widget.url = "/uploads/" + filename;
+        widget.width = width;
 
-        for(var w in widgets) {
-            var widget = widgets[w];
-            if(widget._id == widgetId) {
-                widget.url = "/uploads/" + filename;
-                widget.width = width;
-            }
-        }
+        model
+            .updateWidget(widgetId, widget)
+            .then(function(widget) {
+                res.json(widget);
+            });
+
         res.redirect('../assignment/index.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
     }
 
@@ -64,7 +66,7 @@ module.exports = function (app, model) {
 
     function updateWidget(req, res) {
         model
-            .updateWidget(req.params.widgetId)
+            .updateWidget(req.params.widgetId, req.body)
             .then(function(widget) {
                 res.json(widget);
             });
@@ -73,18 +75,11 @@ module.exports = function (app, model) {
     function reorderWidget(req, res) {
         var start = req.query.start;
         var end = req.query.end;
-        var pageId = req.params.pageId;
-        var curWidgets = [];
-        for(var i=widgets.length-1; i>=0; i--) {
-            if (widgets[i].pageId == pageId) {
-                curWidgets.splice(0, 0, widgets[i]);
-                widgets.splice(i, 1);
-            }
-        }
-        var element = curWidgets.splice(start, 1)[0];
-        curWidgets.splice(end, 0, element);
-        widgets = widgets.concat(curWidgets);
-        res.send(widgets);
+        model
+            .reorderWidget(req.params.pageId, start, end)
+            .then(function(widgets) {
+                res.json(widgets);
+            });
     }
 
     function deleteWidget(req, res) {
