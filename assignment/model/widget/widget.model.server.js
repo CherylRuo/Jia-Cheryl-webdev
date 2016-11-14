@@ -23,12 +23,17 @@ module.exports = function (db, mongoose) {
         widget._page = pageId;
 
         WidgetModel.create(widget, function (err, widget) {
-            PageModel.findById(pageId, function (err, page) {
-                page.widgets.push(widget._id);
-                page.save(function () {
-                    deferred.resolve(widget);
+            if(err){
+                deferred.reject(err);
+                console.log(err);
+            } else {
+                PageModel.findById(pageId, function (err, page) {
+                    page.widgets.push(widget._id);
+                    page.save(function () {
+                        deferred.resolve(widget);
+                    });
                 });
-            });
+            }
         });
 
         return deferred.promise;
@@ -42,7 +47,6 @@ module.exports = function (db, mongoose) {
                 deferred.reject(err);
             } else {
                 var widgetIds = page.widgets;
-                console.log(widgetIds);
                 WidgetModel.find({
                     '_id': { $in: widgetIds}
                 }, function(err, widgets){
