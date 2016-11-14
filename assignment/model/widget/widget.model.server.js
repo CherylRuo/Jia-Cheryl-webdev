@@ -24,7 +24,7 @@ module.exports = function (db, mongoose) {
 
         WidgetModel.create(widget, function (err, widget) {
             PageModel.findById(pageId, function (err, page) {
-                page.widgets.push(widget);
+                page.widgets.push(widget._id);
                 page.save(function () {
                     deferred.resolve(widget);
                 });

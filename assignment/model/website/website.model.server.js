@@ -21,7 +21,7 @@ module.exports = function(db, mongoose) {
         website._user = userId;
         WebsiteModel.create(website, function(err, website) {
             UserModel.findById(userId, function (err, user) {
-                user.websites.push(website);
+                user.websites.push(website._id);
                 user.save(function () {
                     deferred.resolve(website);
                 });

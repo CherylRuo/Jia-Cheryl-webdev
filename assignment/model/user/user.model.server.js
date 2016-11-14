@@ -17,14 +17,11 @@ module.exports = function(db, mongoose) {
 
     function createUser(user) {
         var deferred = q.defer();
-        console.log("Create a user.");
 
         UserModel.create(user, function(err, user) {
             if(err) {
                 deferred.reject(err);
             } else {
-                console.log("user");
-                console.log(user);
                 deferred.resolve(user);
             }
         });
@@ -34,15 +31,11 @@ module.exports = function(db, mongoose) {
 
     function findUserById(id) {
         var deferred = q.defer();
-        console.log("find a user.");
-        console.log(id);
 
         UserModel.findById(id, function(err, user){
             if(err) {
                 deferred.reject(err);
             } else {
-                console.log("user");
-                console.log(user);
                 deferred.resolve(user);
             }
         });
@@ -58,8 +51,6 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             } else {
-                console.log("user");
-                console.log(user);
                 deferred.resolve(user);
             }
         });

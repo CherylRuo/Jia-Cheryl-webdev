@@ -23,7 +23,7 @@ module.exports = function(db, mongoose) {
 
         PageModel.create(page, function(err, page) {
             WebsiteModel.findById(websiteId, function (err, website) {
-                website.pages.push(page);
+                website.pages.push(page._id);
                 website.save(function () {
                     deferred.resolve(page);
                 });
