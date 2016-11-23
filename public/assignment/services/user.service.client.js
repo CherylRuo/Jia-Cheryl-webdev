@@ -12,9 +12,20 @@
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
-            unregisterUser: unregisterUser
+            unregisterUser: unregisterUser,
+            login: login,
+            logout: logout
         };
         return api;
+
+        function login(user) {
+            return $http
+                .post("/api/login", user);
+        }
+
+        function logout(user) {
+            return $http.post("/api/logout");
+        }
 
         function createUser(user) {
             return $http

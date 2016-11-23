@@ -1,10 +1,26 @@
-<div class="container">
+<div class="container alert alert-danger">
     <h1>Register</h1>
-    <input ng-model="model.user.username" class="form-control" type="text" placeholder="username"/>
-    <input ng-model="model.user.password" class="form-control" type="password" placeholder="password"/>
-    <input ng-model="model.user.verifypassword" class="form-control" type="password" placeholder="verify password"/>
-    <a class="btn btn-primary btn-block"
-       ng-click="model.createUser(model.user)">Register</a>
-    <a class="btn btn-danger  btn-block"
-       href="#/login">Cancel</a>
+    <form name="myForm" novalidate>
+        <input ng-model="model.user.username" name="username" class="form-control" type="text" placeholder="username"
+               required/>
+        <span ng-show="myForm.$submitted && myForm.username.$error.required" class="help-block">
+                Please input username.
+        </span>
+        <input ng-model="model.user.password" name="password" class="form-control" type="password"
+               placeholder="password" required/>
+        <span ng-show="myForm.$submitted && myForm.password.$error.required" class="help-block">
+               Please input password.
+        </span>
+        <input ng-model="model.user.verifypassword" name="verifypassword" class="form-control" type="password"
+               placeholder="verify password"/>
+        <span ng-show="model.user.password != model.user.verifypassword" class="help-block">
+               Passwords are not match.
+        </span>
+        <button type="submit" class="btn btn-primary btn-block"
+                ng-click="myForm.$valid && model.createUser(model.user)">Register
+        </button>
+        <button class="btn btn-danger  btn-block"
+                href="#/login">Cancel
+        </button>
+    </form>
 </div>

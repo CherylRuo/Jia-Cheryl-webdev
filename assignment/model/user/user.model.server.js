@@ -8,6 +8,7 @@ module.exports = function(db, mongoose) {
     var api = {
         createUser: createUser,
         findUserById: findUserById,
+        findUserByFacebookId: findUserByFacebookId,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
@@ -43,9 +44,13 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
+    function findUserByFacebookId(facebookId) {
+        return User.findOne({'facebook.id': facebookId});
+    }
+
     function findUserByCredentials(username, password) {
         var deferred = q.defer();
-        console.log("find User By Credentials.");
+        console.log("find user By Credentials.");
 
         UserModel.findOne({username: username, password: password}, function(err, user){
             if(err) {

@@ -96,7 +96,7 @@ module.exports = function(db, mongoose) {
                                     pages.splice(i, 1);
                             }
                             website.save(function () {});
-                        });dbd
+                        });
                     }
                 });
             }

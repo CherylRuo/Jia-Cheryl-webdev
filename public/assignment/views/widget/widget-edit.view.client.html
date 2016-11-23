@@ -31,6 +31,9 @@
 </nav>
 
 <div ng-switch="model.widget.type">
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
     <div ng-switch-when="HEADER">
         <div ng-include="'views/widget/widget-heading.view.client.html'"></div>
     </div>

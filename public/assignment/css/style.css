@@ -94,20 +94,11 @@ iframe {
     overflow: auto
 }
 
-#project {
-    font-family: Georgia;
-    min-width: 1000px !important;
-    overflow-y: scroll;
-    padding-top: 60px;
-    padding-left: 20px;
-    background: pink
-}
-
-.shortname {
-    position: absolute;
-    display: block;
-    margin: auto
-}
+/*.shortname {*/
+    /*position: absolute;*/
+    /*display: block;*/
+    /*margin: auto*/
+/*}*/
 
 p {
     word-break: break-all !important
