@@ -10,9 +10,9 @@ module.exports = function (app, model) {
         // clientID     : 1018543724921975,
         // clientSecret : 'ee9c588d03a79ee3349731f926e63cd9',
         // callbackURL  : 'http://localhost:3000/assignment/index.html',
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL,
         profileFields: ['id', 'name', 'email']
     };
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -20,14 +20,14 @@ module.exports = function (app, model) {
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
-    app.post  ('/api/login', passport.authenticate('local'), login);
+    app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
-    app.post ('/api/register', register);
+    app.post('/api/register', register);
     app.post('/api/user', createUser);
     app.get('/api/user', findUser);
     app.get('/api/user/:userId', findUserById);
-    app.get ('/api/loggedin', loggedin);
-    app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    app.get('/api/loggedin', loggedin);
+    app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
             successRedirect: '/#/user',
@@ -50,29 +50,29 @@ module.exports = function (app, model) {
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
-    function register (req, res) {
+    function register(req, res) {
         var user = req.body;
         user.password = bcrypt.hashSync(user.password);
         model
             .createUser(user)
             .then(
-                    function(user){
-                        if(user){
-                            req.login(user, function(err) {
-                                if(err) {
-                                    res.status(400).send(err);
-                                } else {
-                                    res.json(user);
-                                }
-                            });
-                        }
-                    });
+                function (user) {
+                    if (user) {
+                        req.login(user, function (err) {
+                            if (err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                });
     }
 
     function unregisterUser(req, res) { // delete
         model
             .deleteUser(req.params.userId)
-            .then(function(status){
+            .then(function (status) {
                 res.json(status);
             });
     }
@@ -80,7 +80,7 @@ module.exports = function (app, model) {
     function updateUser(req, res) {
         model
             .updateUser(req.params.userId, req.body)
-            .then(function(user) {
+            .then(function (user) {
                 res.json(user);
             });
     }
@@ -88,7 +88,7 @@ module.exports = function (app, model) {
     function createUser(req, res) {
         model
             .createUser(req.body)
-            .then(function(user) {
+            .then(function (user) {
                 res.json(user);
             });
     }
@@ -97,10 +97,10 @@ module.exports = function (app, model) {
         var username = req.query.username;
         var password = req.query.password;
 
-        if(username!=null && password==null) {
+        if (username != null && password == null) {
             findUserByUsername(req, res);
         }
-        if(username!=null && password!=null) {
+        if (username != null && password != null) {
             findUserByCredentials(req, res);
         }
     }
@@ -108,7 +108,7 @@ module.exports = function (app, model) {
     function findUserByCredentials(req, res) {
         model
             .findUserByCredentials(req.query.username, req.query.password)
-            .then(function(user) {
+            .then(function (user) {
                 res.json(user);
             });
     }
@@ -116,7 +116,7 @@ module.exports = function (app, model) {
     function findUserByUsername(req, res) {
         model
             .findUserByUsername(req.query.username)
-            .then(function(user) {
+            .then(function (user) {
                 res.json(user);
             });
     }
@@ -125,7 +125,7 @@ module.exports = function (app, model) {
         console.log(req.params.userId);
         model
             .findUserById(req.params.userId)
-            .then(function(user) {
+            .then(function (user) {
                 res.json(user);
             });
     }
@@ -133,9 +133,30 @@ module.exports = function (app, model) {
     function facebookStrategy(token, refreshToken, profile, done) {
         model
             .findUserByFacebookId(profile.id)
-            .then(function(user) {
-                res.json(user);
-            });
+            .then(
+                function (facebookUser) {
+                    if (facebookUser) {
+                        return done(null, facebookUser);
+                    } else {
+                        facebookUser = {
+                            username: profile.name.givenName.concat(profile.name.familyName).toLowerCase(),
+                            firstName: profile.name.givenName,
+                            lastName: profile.name.familyName,
+                            email: profile.emails[0].value,
+                            facebook: {
+                                token: token,
+                                id: profile.id
+                            }
+                        };
+                        model
+                            .createUser(facebookUser)
+                            .then(
+                                function (facebookUser) {
+                                    return done(null, facebookUser);
+                                }
+                            );
+                    }
+                });
     }
 
     function serializeUser(user, done) {
@@ -146,10 +167,10 @@ module.exports = function (app, model) {
         model
             .findUserById(user._id)
             .then(
-                function(user){
+                function (user) {
                     done(null, user);
                 },
-                function(err){
+                function (err) {
                     done(err, null);
                 }
             );
@@ -159,15 +180,17 @@ module.exports = function (app, model) {
         model
             .findUserByCredentials(username, password)
             .then(
-                function(user) {
-                    if(user.username === username && user.password === password) {
+                function (user) {
+                    if (user.username === username && user.password === password) {
                         return done(null, user);
                     } else {
                         return done(null, false);
                     }
                 },
-                function(err) {
-                    if (err) { return done(err); }
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
                 }
             );
     }
