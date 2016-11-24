@@ -45,7 +45,7 @@ module.exports = function(db, mongoose) {
     }
 
     function findUserByFacebookId(facebookId) {
-        return User.findOne({'facebook.id': facebookId});
+        return UserModel.findOne({'facebook.id': facebookId});
     }
 
     function findUserByCredentials(username, password) {
