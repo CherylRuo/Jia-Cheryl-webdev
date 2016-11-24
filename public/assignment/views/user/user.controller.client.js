@@ -53,10 +53,12 @@
         }
     }
 
-    function ProfileController($location, $routeParams, UserService) {
+    function ProfileController($location, $routeParams, $rootScope, UserService) {
         var vm = this;
-        var userId = parseInt($routeParams.uid);
+        vm.userId = $rootScope.currentUser._id;
+        var userId = vm.userId;
         var promise = UserService.findUserById(userId);
+
         promise.then(
             function (response) {
                 vm.user = response.data;
