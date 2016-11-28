@@ -22,6 +22,9 @@
 </nav>
 
 <div class="container">
+    <div ng-show="model.error" class="alert alert-danger alert-dismissible">
+        {{model.error}}
+    </div>
     <h1>Profile</h1>
     <form>
         <div class="form-group">

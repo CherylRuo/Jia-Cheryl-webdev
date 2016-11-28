@@ -1,4 +1,7 @@
-<div class="container alert alert-danger">
+<div class="container">
+    <div ng-show="model.error" class="alert alert-danger alert-dismissible">
+        {{model.error}}
+    </div>
     <h1>Register</h1>
     <form name="myForm" novalidate>
         <input ng-model="model.user.username" name="username" class="form-control" type="text" placeholder="username"
@@ -17,10 +20,10 @@
                Passwords are not match.
         </span>
         <button type="submit" class="btn btn-primary btn-block"
-                ng-click="myForm.$valid && model.createUser(model.user)">Register
+                ng-click="myForm.$valid && model.register(model.user)">Register
         </button>
-        <button class="btn btn-danger  btn-block"
+        <a class="btn btn-danger  btn-block"
                 href="#/login">Cancel
-        </button>
+        </a>
     </form>
 </div>

@@ -17,7 +17,7 @@
                 vm.pages = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find page for this website."
             });
         vm.userId = userId;
         vm.websiteId = websiteId;
@@ -33,7 +33,7 @@
                 vm.pages = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find page for this website."
             });
         vm.createPage = createPage;
         function createPage(page) {
@@ -47,7 +47,7 @@
                     $location.url("/user/" + userId + "/website/" + websiteId + "/page");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot create page."
                 });
         }
         vm.websiteId = websiteId;
@@ -65,7 +65,7 @@
                 vm.pages = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find page for this website."
             });
         var promise1 = PageService.findPageById(pageId);
         promise1.then(
@@ -73,7 +73,7 @@
                 vm.page = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find page."
             });
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
@@ -84,7 +84,7 @@
                     $location.url("/user/" + userId + "/website/" + websiteId + "/page");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot update page."
                 });
         }
         function deletePage() {
@@ -94,7 +94,7 @@
                     $location.url("/user/" + userId + "/website/" + websiteId +"/page");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot delete page."
                 });
         }
         vm.pageId = pageId;

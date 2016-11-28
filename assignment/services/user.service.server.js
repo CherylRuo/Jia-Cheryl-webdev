@@ -51,22 +51,36 @@ module.exports = function (app, model) {
     }
 
     function register(req, res) {
-        var user = req.body;
-        user.password = bcrypt.hashSync(user.password);
+        var newUser = req.body;
+        var username = newUser.username;
         model
-            .createUser(user)
+            .findUserByUsername(username)
             .then(
-                function (user) {
-                    if (user) {
-                        req.login(user, function (err) {
-                            if (err) {
-                                res.status(400).send(err);
-                            } else {
-                                res.json(user);
-                            }
-                        });
+                function (user){
+                    if(user){
+                        res.status(400).send("Username already exists.");
                     }
-                });
+                    else {
+                        newUser.password = bcrypt.hashSync(newUser.password);
+                        return model
+                            .createUser(newUser);
+                    }
+                },
+                function (err){
+                    res.status(400).send(err);
+                }
+            ).then(
+            function (user) {
+                if (user) {
+                    req.login(user, function (err) {
+                        if (err) {
+                            res.status(400).send(err);
+                        } else {
+                            res.json(user);
+                        }
+                    });
+                }
+            });
     }
 
     function unregisterUser(req, res) { // delete
@@ -168,6 +182,7 @@ module.exports = function (app, model) {
             .findUserById(user._id)
             .then(
                 function (user) {
+                    delete user.password;
                     done(null, user);
                 },
                 function (err) {
@@ -178,10 +193,10 @@ module.exports = function (app, model) {
 
     function localStrategy(username, password, done) {
         model
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(
                 function (user) {
-                    if (user.username === username && user.password === password) {
+                    if(user && user.username === username && bcrypt.compareSync(password, user.password)) {
                         return done(null, user);
                     } else {
                         return done(null, false);

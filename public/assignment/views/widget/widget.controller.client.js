@@ -19,7 +19,7 @@
                 vm.widgets = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find widget for this page."
             });
         vm.userId = userId;
         vm.websiteId = websiteId;
@@ -54,7 +54,7 @@
                     $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot create widget."
                 });
         }
         vm.websiteId = websiteId;
@@ -78,7 +78,7 @@
                 vm.widget = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find widget."
             });
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
@@ -89,7 +89,7 @@
                     $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot update widget."
                 });
         }
         function deleteWidget() {
@@ -99,7 +99,7 @@
                     $location.url("/user/"+ userId +"/website/" + websiteId + "/page/" + pageId + "/widget");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot delete widget."
                 });
 
         }

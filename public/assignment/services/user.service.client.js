@@ -7,7 +7,7 @@
         .factory("UserService", UserService);
     function UserService($http) {
         var api = {
-            createUser: createUser,
+            register: register,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
@@ -23,13 +23,14 @@
                 .post("/api/login", user);
         }
 
-        function logout(user) {
-            return $http.post("/api/logout");
+        function logout() {
+            return $http
+                .post("/api/logout");
         }
 
-        function createUser(user) {
+        function register(user) {
             return $http
-                .post("/api/user/", user)
+                .post("/api/register", user)
         }
 
         function findUserById(id) {

@@ -17,30 +17,21 @@
                 .then(
                     function(response) {
                         var user = response.data;
-                        $rootScope.currentUser = user;
-                        $location.url("/user/"+user._id);
+                        if (user && user._id) {
+                            $rootScope.currentUser = user;
+                            $location.url("/user/" + user._id);
+                        } else {
+                            vm.error = "Username or password is incorrect.";
+                        }
+                    },
+                    function (error) {
+                        vm.error = "Cannot login.";
                     });
         }
     }
 
-    function RegisterController($location, UserService) {
+    function RegisterController($location, UserService, $rootScope) {
         var vm = this;
-        vm.createUser = createUser;
-        function createUser(user) {
-            if (user.password != user.verifypassword) {
-                vm.alert = "incorrect verify password";
-                return;
-            }
-            var promise = UserService.createUser(user);
-            promise.then(
-                function (response) {
-                    vm.user._id = response.data._id;
-                    $location.url("/user/" + vm.user._id);
-                },
-                function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
-                });
-        }
         vm.register = register;
         function register(user) {
             var promise = UserService.register(user);
@@ -49,6 +40,9 @@
                         var user = response.data;
                         $rootScope.currentUser = user;
                         $location.url("/user/"+user._id);
+                    },
+                    function (httpError) {
+                        vm.error = "User already exists!";
                     });
         }
     }
@@ -64,7 +58,7 @@
                 vm.user = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Error!";
             });
         vm.updateUser = updateUser;
         function updateUser(updateUser) {
@@ -74,7 +68,7 @@
                     $location.url("/user/" + userId);
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Error!";
                 });
         }
 

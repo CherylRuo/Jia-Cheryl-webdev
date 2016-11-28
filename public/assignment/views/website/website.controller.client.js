@@ -17,7 +17,7 @@
                 vm.websites = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find website for this user."
             });
         vm.userId = userId;
     }
@@ -31,7 +31,7 @@
                 vm.websites = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find website for this user."
             });
         vm.createWebsite = createWebsite;
         function createWebsite(website) {
@@ -46,7 +46,7 @@
                     $location.url("/user/"+ userId +"/website");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot create website."
                 });
         }
         vm.userId = userId;
@@ -63,7 +63,7 @@
                 vm.website = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find website."
             });
         var promise1 = WebsiteService.findAllWebsitesForUser(userId);
         promise1.then(
@@ -71,7 +71,7 @@
                 vm.websites = response.data;
             },
             function (httpError) {
-                throw httpError.status + " : " + httpError.data;
+                vm.error = "Cannot find website for this user."
             });
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
@@ -82,7 +82,7 @@
                     $location.url("/user/" + userId + "/website");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot update website."
                 });
         }
         function deleteWebsite() {
@@ -92,7 +92,7 @@
                     $location.url("/user/" + userId + "/website");
                 },
                 function (httpError) {
-                    throw httpError.status + " : " + httpError.data;
+                    vm.error = "Cannot delete website."
                 });
         }
         vm.userId = userId;
