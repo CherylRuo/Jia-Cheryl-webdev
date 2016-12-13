@@ -82,5 +82,21 @@
                         $location.url("/");
                     });
         }
+        vm.unregister = unregister;
+        function unregister() {
+            UserService
+                .unregisterUser(vm.userId)
+                .then(
+                    function (response) {
+                        // Take the user to login page on successful deletion
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    },
+                    function (httpError) {
+                        // Display failure message
+                        vm.deleteError = "Error! ";
+                    }
+                );
+        }
     }
 })();
