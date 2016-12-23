@@ -2,7 +2,7 @@ input.form-control {
     margin-bottom: 5px;
 }
 
-body {
+.webapp {
     overflow: scroll;
     padding-top: 60px;
     background: url('../images/1.jpg') no-repeat center center fixed;
@@ -12,17 +12,35 @@ body {
     background-size: cover
 }
 
+.div-row {
+    padding: 30px;
+}
+
 #home {
-    font-family: Georgia;
     overflow: scroll;
-    color: royalblue;
-    padding-top: 10px;
-    padding-left: 10px;
-    background: url('../images/2.jpg') no-repeat center center fixed;
+    color: white;
+    padding-top: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: darkcyan;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover
+}
+
+.navbar-default {
+    background-color: darkslategray;
+    border-color: darkslategray;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.has-border {
+    border: 1px solid white;
+    padding: 30px;
 }
 
 ul {
@@ -37,6 +55,11 @@ li {
 span {
     position: relative !important;
     color: #337ab7 !important
+}
+
+a {
+    color: white;
+    text-decoration: none;
 }
 
 #widgetlist {
@@ -70,7 +93,7 @@ a {
 }
 
 img {
-    width:25%;   !important;
+    width:auto;   !important;
     height: auto     !important
 }
 
@@ -79,17 +102,10 @@ iframe {
     height: auto     !important
 }
 
-#head {
-    color: #337ab7;
-}
-
-#head1 {
-    color: #337ab7;
-}
-
-#cherylruo {
-    padding-left: 60px;
-    min-width: 260px !important;
+.image {
+    padding: 10px;
+    width: auto;
+    height: auto;
     overflow: auto
 }
 
