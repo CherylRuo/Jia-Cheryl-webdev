@@ -22,7 +22,7 @@ input.form-control {
     padding-top: 60px;
     padding-left: 60px;
     padding-right: 60px;
-    background-color: darkcyan;
+    background-color: #337ab7;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -30,8 +30,8 @@ input.form-control {
 }
 
 .navbar-default {
-    background-color: darkslategray;
-    border-color: darkslategray;
+    background-color: navy;
+    border-color: navy;
 }
 
 .navbar-default .navbar-brand {
