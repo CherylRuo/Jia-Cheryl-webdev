@@ -64,6 +64,7 @@ span {
 a {
     color: white;
     text-decoration: none;
+    position: relative
 }
 
 a:hover {
@@ -95,10 +96,6 @@ a:hover {
 
 .nounderline {
     text-decoration: none !important
-}
-
-a {
-    position: relative
 }
 
 img {
