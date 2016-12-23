@@ -38,6 +38,10 @@ input.form-control {
     color: white;
 }
 
+.navbar-default .navbar-link {
+    color: white;
+}
+
 .has-border {
     border: 1px solid white;
     padding: 30px;

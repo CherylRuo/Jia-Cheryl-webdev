@@ -7,13 +7,22 @@
     <link rel="shortcut icon" type="image/icon" href="favicon.ico">
     <title>Cheryl's Home Page</title>
 </head>
-<body class="fontColor" id="home"><b>
+<body id="home"><b>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="col-xs-10">
             <div class="navbar-header">
                 <a class="navbar-brand">
                     Cheryl Jia's Home Page
                 </a>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="navbar-header">
+                <p id="ok" class="navbar-text">
+                    <a ng-click="model.createPage(model.page)" class="navbar-link">
+                        Send me a message
+                        <span class="glyphicon glyphicon-envelope"></span></a>
+                </p>
             </div>
         </div>
     </nav>
