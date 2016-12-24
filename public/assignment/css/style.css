@@ -44,7 +44,8 @@ input.form-control {
 
 .has-border {
     border: 1px solid white;
-    padding: 30px;
+    padding: 10px;
+    word-wrap: break-word;
 }
 
 ul {
@@ -58,7 +59,12 @@ li {
 
 span {
     position: relative !important;
-    color: #337ab7 !important
+    color: #337ab7;
+}
+
+.homespan {
+    position: relative !important;
+    color: lightpink;
 }
 
 a {
