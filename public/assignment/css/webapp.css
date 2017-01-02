@@ -52,11 +52,6 @@ span {
     text-decoration: none;
 }
 
-img {
-    width:auto;
-    height: auto
-}
-
 iframe {
     width: 50%  !important;
     height: auto     !important
@@ -72,4 +67,18 @@ iframe {
 
 p {
     word-break: break-all !important
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
