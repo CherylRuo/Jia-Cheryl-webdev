@@ -35,6 +35,10 @@ input.form-control {
     word-wrap: break-word;
 }
 
+.div-row {
+    padding: 30px;
+}
+
 ul {
     font-size: large;
 }
