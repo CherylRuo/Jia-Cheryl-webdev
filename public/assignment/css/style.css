@@ -69,12 +69,6 @@ a:hover {
     text-decoration: none;
 }
 
-img {
-    width:auto;
-    height: auto;
-    padding-bottom: 10px
-}
-
 iframe {
     width: 50%  !important;
     height: auto     !important
