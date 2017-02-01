@@ -39,8 +39,9 @@ input.form-control {
     padding: 30px;
 }
 
-largeFont {
-    font-size: large;
+cherylJiaFont {
+    font-size: x-large;
+    font-family: Georgia;
 }
 
 ul {
