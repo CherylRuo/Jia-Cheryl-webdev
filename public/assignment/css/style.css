@@ -2,13 +2,10 @@ input.form-control {
     margin-bottom: 5px;
 }
 
-#home {
+body {
     overflow: scroll;
     color: white;
-    padding-top: 60px;
-    padding-left: 60px;
-    padding-right: 60px;
-    background-color: dimgray;
+    background-color: cadetblue;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -16,8 +13,8 @@ input.form-control {
 }
 
 .navbar-default {
-    background-color: black;
-    border-color: black;
+    background-color: lightgrey;
+    border-color: lightgrey;
 }
 
 .navbar-default .navbar-brand {

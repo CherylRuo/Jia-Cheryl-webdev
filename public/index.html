@@ -3,30 +3,98 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assignment/css/homepage.css" rel="stylesheet">
     <link href="/assignment/css/style.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/icon" href="favicon.ico">
     <title>Cheryl Jia</title>
 </head>
-<body id="home">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="col-sm-10 col-xs-8">
-            <div class="navbar-header">
-                <a class="navbar-brand cherylJiaFont">
-                    Cheryl Jia
-                </a>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top header">
+    <div class="container-fluid row" id="header-first-row">
+        <div class="col-xs-1 col-sm-2 navbar-background-part">
+            <a href=#><img id="logo" src="../assignment/images/logo.jpg"></a>
+        </div>
+        <div class="col-xs-8 col-sm-8"></div>
+        <div class="hidden-xs col-sm-2 hide-part">
+            <div class="search glyphicon glyphicon-search"></div>
+            <input id="search-input" type="text" name="search" placeholder="Search..">
+        </div>
+        <div class="menu_button dropdown">
+            <button ng-click="model.openNav()" class="dropbtn glyphicon glyphicon-menu-hamburger" id="background-part-dropdown-menu"></button>
+            <div ng-show="model.navOpened" class="dropdown-menu-content">
+                <input class="search" type="text" name="search" placeholder="Search.." id="dropdown-search">
+                <a href="http://ec2-52-43-250-165.us-west-2.compute.amazonaws.com:8000/home.html">Snatch</a>
+                <a href="assignment/index.html">Web App</a>
+                <a href="https://play.google.com/apps/testing/edu.neu.madcourse.numad17s_ruojia">Scroggle</a>
+                <a href="http://www.linkedin.com/in/cheryljia2016">LinkedIn</a>
+                <a href="http://github.com/CherylRuo">Github</a>
+                <a href="mailto:cherylruoj@gmail.com">Contact</a>
             </div>
         </div>
-        <div class="col-sm-2 col-xs-4">
-            <div class="navbar-header">
-                <p id="ok" class="navbar-text">
-                    <a href="mailto:dione1183348@gmail.com">
-                        Email Me
-                        <span class="glyphicon glyphicon-envelope homespan"></span>
-                    </a>
-                </p>
+    </div>
+    <div class="container-fluid row" id="header-second-row">
+        <div class="col-xs-4 col-sm-4"></div>
+        <div class="hidden-xs background-part-link hide-part">
+            <div class="col-xs-1 col-sm-1 dropdown">
+                <button class="dropbtn">
+                    <a href=#>Projects</a>
+                </button>
+                <div class="dropdown-content">
+                    <a href="http://ec2-52-43-250-165.us-west-2.compute.amazonaws.com:8000/home.html">Snatch</a>
+                    <a href="assignment/index.html">Web App</a>
+                    <a href="#">Scroggle</a>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 dropdown">
+                <button class="dropbtn">
+                    <a href=#>Links</a>
+                </button>
+                <div class="dropdown-content">
+                    <a href="http://www.linkedin.com/in/cheryljia2016">LinkedIn</a>
+                    <a href="http://github.com/CherylRuo">Github</a>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 dropdown">
+                <button class="dropbtn">
+                    <a href="mailto:cherylruoj@gmail.com">Contact</a>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
+
+<div class="background-part">
+    <div class="container-fluid row background-part-description">
+        <div id="background-part-large-title">
+            Welcome to Cheryl Ruo Jia's homepage!
+        </div>
+        <div id="background-part-center-btn-div"><a href="mailto:cherylruoj@gmail.com">
+            <button id="background-part-center-btn">Email Me</button>
+        </a>
+        </div>
+    </div>
+</div>
+
+    <!--<nav class="navbar navbar-default navbar-fixed-top">-->
+        <!--<div class="col-sm-10 col-xs-8">-->
+            <!--<div class="navbar-header">-->
+                <!--<a class="navbar-brand cherylJiaFont">-->
+                    <!--Cheryl Jia-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-2 col-xs-4">-->
+            <!--<div class="navbar-header">-->
+                <!--<p id="ok" class="navbar-text">-->
+                    <!--<a href="mailto:dione1183348@gmail.com">-->
+                        <!--Email Me-->
+                        <!--<span class="glyphicon glyphicon-envelope homespan"></span>-->
+                    <!--</a>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</nav>-->
     <h3>About me</h3>
     <div class="has-border container-fluid row">
         <div class="col-sm-4 xs-hidden">
@@ -80,6 +148,7 @@
                 <img class="image" src="/assignment/images/scroggle.jpg" style="">
             </a>
         </div>
+    </div>
         <!--<div class="col-sm-2"></div>-->
         <!--<div class="col-sm-5 xs-hidden has-border">-->
             <!--<a href="assignment/index.html">-->
@@ -87,25 +156,72 @@
                 <!--<img class="image" src="/assignment/images/webapp.jpg" style="">-->
             <!--</a>-->
         <!--</div>-->
-    </div>
-    <div class="div-row container-fluid row">
-        <h4>Personal links</h4>
-        <div class="col-sm-5 xs-hidden has-border">
-            <a href="http://github.com/CherylRuo">
-                Github
-                <img class="image" src="/assignment/images/github.jpg" style="">
-            </a>
+    <!--</div>-->
+    <!--<div class="div-row container-fluid row">-->
+        <!--<h4>Personal links</h4>-->
+        <!--<div class="col-sm-5 xs-hidden has-border">-->
+            <!--<a href="http://github.com/CherylRuo">-->
+                <!--Github-->
+                <!--<img class="image" src="/assignment/images/github.jpg" style="">-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="col-sm-2"></div>-->
+        <!--<div class="col-sm-5 xs-hidden has-border">-->
+            <!--<a href="http://www.linkedin.com/in/cheryljia2016">-->
+                <!--LinkedIn-->
+                <!--<img class="image" src="/assignment/images/linkedin.jpg" style="">-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-lg-12 text-center">-->
+        <!--<p>©Copyright 2017. Cheryl Jia</p>-->
+    <!--</div>-->
+<div class="footer">
+    <div class="container-fluid row div-row">
+        <div class="col-sm-6" id="footer-content">
+            <div id="footer-product">
+                <a href="http://ec2-52-43-250-165.us-west-2.compute.amazonaws.com:8000/home.html">
+                    SNATCH >
+                </a>
+            </div>
+            <div id="footer-solutions">
+                <a href="assignment/index.html">
+                    ANOTHER WEB APPLICATION >
+                </a>
+            </div>
+            <div id="footer-support">
+                <a href="https://play.google.com/apps/testing/edu.neu.madcourse.numad17s_ruojia">
+                    SCROGGLE >
+                </a>
+            </div>
         </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-5 xs-hidden has-border">
-            <a href="http://www.linkedin.com/in/cheryljia2016">
-                LinkedIn
-                <img class="image" src="/assignment/images/linkedin.jpg" style="">
-            </a>
+        <div class="col-xs-1 col-sm-1"></div>
+        <div class="col-sm-5" id="footer-contact-us">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-10">
+                <div>
+                    <h3 id="footer-contact1">CONTACT ME</h3>
+                    <p id="footer-contact2">A full stack engineer<br>in Bay Area</p>
+                    <a id="email-us" href="mailto:cherylruoj@gmail.com">Email Me</a>
+                </div>
+                <div id="social-media">
+                    <div class="col-xs-1 col-sm-1">
+                        <a href="http://www.linkedin.com/in/cheryljia2016"><img id="linkedin"
+                                                                                      src="../assignment/images/in.png"></a>
+                    </div>
+                    <div class="col-xs-1 col-sm-1"></div>
+                    <div class="col-xs-1 col-sm-1">
+                        <a href="http://github.com/CherylRuo"><img id="facebook"
+                                                                              src="../assignment/images/gh.png"></a></div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-lg-12 text-center">
-        <p>©Copyright 2017. Cheryl Jia</p>
+    <div class="container-fluid row div-row">
+        <div class="col-lg-12 text-center copyright">
+            <p>©Copyright 2017. Cheryl Jia.</p>
+        </div>
     </div>
+</div>
 </body>
 </html>
