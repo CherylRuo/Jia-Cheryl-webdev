@@ -22,7 +22,7 @@ module.exports = function (app, model) {
         var pageId = req.body.pageId;
         var widgetId = req.body.widgetId;
         if(myFile == null) {
-            res.redirect('../assignment/home.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
+            res.redirect('../assignment/index.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
             return;
         }
         var width         = req.body.width;
@@ -37,7 +37,7 @@ module.exports = function (app, model) {
                 res.json(widget);
             });
 
-        res.redirect('../assignment/home.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
+        res.redirect('../assignment/index.html#/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget/'+widgetId);
     }
 
     function createWidget(req, res) {
