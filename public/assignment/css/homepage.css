@@ -22,7 +22,7 @@
     margin: 8px;
 }
 .search {
-    color: orange !important;
+    color: darkorange !important;
 }
 .search:hover {
     color: deepskyblue !important;
@@ -48,7 +48,7 @@
 
 #phone {
     padding-top: 23px;
-    color: orange;
+    color: darkorange;
     font-size: small;
 }
 
@@ -58,7 +58,7 @@
 }
 
 #background-part-large-title {
-    color: Orange;
+    color: darkorange;
     font-size: 30px;
     padding-top: 400px;
     text-align: center;
@@ -104,7 +104,7 @@
 }
 
 a:hover {
-    color: deepskyblue;
+    color: deepskyblue !important;
     text-decoration: none;
 }
 
@@ -166,7 +166,7 @@ a:hover {
 }
 
 #email-us {
-    color: orange;
+    color: darkorange;
 }
 
 #background-part-center-btn-div {
@@ -175,10 +175,10 @@ a:hover {
 }
 
 #background-part-center-btn {
-    border-color: orange;
+    border-color: darkorange;
     border-width: medium;
     font-size: large;
-    color: orange;
+    color: darkorange;
     width: 180px;
     height: 45px;
     background-color: transparent;
@@ -187,7 +187,7 @@ a:hover {
 }
 
 #background-part-center-btn:hover {
-    background-color: orange;
+    background-color: darkorange;
     color: white;
     border-color: white;
 }
