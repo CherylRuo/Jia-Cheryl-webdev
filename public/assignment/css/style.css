@@ -5,7 +5,7 @@ input.form-control {
 #content {
     overflow: scroll;
     color: white;
-    background-color: cadetblue;
+    background-color: lightskyblue;
     padding-top: 60px;
     padding-left: 60px;
     padding-right: 60px;
@@ -30,7 +30,7 @@ input.form-control {
 }
 
 .has-border {
-    border: 1px solid white;
+    border: 3px solid orange;
     padding: 10px;
     word-wrap: break-word;
 }
@@ -64,13 +64,16 @@ span {
 }
 
 a {
-    color: white;
     text-decoration: none;
     position: relative
 }
 
+.titles {
+    color: black !important;
+}
+
 a:hover {
-    color: lightpink;
+    color: lightpink !important;
     text-decoration: none;
 }
 
