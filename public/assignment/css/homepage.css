@@ -149,8 +149,7 @@ a:hover {
     float: left;
 }
 #linkedin:hover, #facebook:hover {
-    transform: scale(1.1);
-    background-color: deepskyblue;
+    transform: scale(1.1)
 }
 
 .middle-part {
