@@ -108,25 +108,30 @@ a:hover {
     text-decoration: none;
 }
 
-#footer-product {
+.footer-part {
     padding-top: 30px;
+    text-decoration: none;
 }
 
-#footer-solutions {
-    padding-top: 30px;
-}
+/*#footer-product {*/
+    /*padding-top: 30px;*/
+/*}*/
 
-#footer-support {
-    padding-top: 30px;
-}
+/*#footer-solutions {*/
+    /*padding-top: 30px;*/
+/*}*/
 
-#footer-career {
-    padding-top: 30px;
-    font-family: Georgia;
-    letter-spacing: 1px;
-    font-size: large;
-    color: black;
-}
+/*#footer-support {*/
+    /*padding-top: 30px;*/
+/*}*/
+
+/*#footer-career {*/
+    /*padding-top: 30px;*/
+    /*font-family: Georgia;*/
+    /*letter-spacing: 1px;*/
+    /*font-size: large;*/
+    /*color: black;*/
+/*}*/
 
 #footer-contact-us {
     padding-top: 100px;
