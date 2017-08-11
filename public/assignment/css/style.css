@@ -33,6 +33,7 @@ input.form-control {
     border: 3px solid orange;
     padding: 10px;
     word-wrap: break-word;
+    border-radius: 15px;
 }
 
 .div-row {
