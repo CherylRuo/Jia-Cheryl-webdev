@@ -98,3 +98,7 @@ p {
     word-break: break-all !important
 }
 
+.intro {
+    font-weight: bold;
+    margin: auto;
+}
