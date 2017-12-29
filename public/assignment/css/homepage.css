@@ -305,6 +305,9 @@ a:hover {
 }
 
 @media all and (max-width:400px) {
+    #titles, #intro {
+        display: none;
+    }
     .dropdown-content {
         width: 100%;
         height: 100%;
